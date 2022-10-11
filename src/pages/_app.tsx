@@ -1,5 +1,4 @@
 //Libs
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 //Types and Interfaces
 import type { AppProps } from "next/app";
@@ -36,11 +35,9 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const queryClient = new QueryClient();
-
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
       <GlobalStyle />
       <RecoilRoot>
         <S.App>
@@ -48,7 +45,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </S.App>
       </RecoilRoot>
-    </QueryClientProvider>
+    </>
   );
 }
 
