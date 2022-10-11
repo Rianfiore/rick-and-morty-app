@@ -19,10 +19,6 @@ const PageIndicator = () => {
   const pagination = useRecoilValue(paginationState);
   const { totalPages, currentPage, currentSearch, fivePages } = pagination;
 
-  useEffect(() => {
-    console.log(currentPage, fivePages);
-  }, [currentPage, fivePages]);
-
   return (
     <S.Pagination>
       {totalPages.length > 5 ? (
