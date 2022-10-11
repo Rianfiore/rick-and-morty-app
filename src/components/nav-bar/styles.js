@@ -378,11 +378,11 @@ export const NavBar = styled.header`
     }
 
     &--opened {
-      animation: openNavBar 1.5s forwards !important;
+      animation: openNavBar 1s ease-in forwards !important;
     }
 
     &--closed {
-      animation: closedNavBar 0.8s forwards !important;
+      animation: closedNavBar 0.6s forwards !important;
     }
 
     &--show {
@@ -395,21 +395,21 @@ export const NavBar = styled.header`
 
     @keyframes openNavBar {
       from {
-        top: -1%;
+        top: 0px;
       }
 
       to {
-        top: 13%;
+        top: 100px;
       }
     }
 
     @keyframes closedNavBar {
       from {
-        top: 13%;
+        top: 100px;
       }
 
       to {
-        top: -1%;
+        top: 0px;
       }
     }
 
