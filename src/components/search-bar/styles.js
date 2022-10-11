@@ -63,6 +63,10 @@ export const SearchBar = styled.div`
       font-family: "Righteous", cursive;
       letter-spacing: 3px;
 
+      &--clear-icon {
+        width: 400px;
+      }
+
       &::placeholder {
         color: #006400;
 
@@ -83,6 +87,9 @@ export const SearchBar = styled.div`
     }
 
     &__button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background-color: white;
       width: 32px;
       height: 32px;
@@ -99,6 +106,17 @@ export const SearchBar = styled.div`
 
       &:active {
         background-color: #5cad4a;
+      }
+
+      &__first {
+        border-top-right-radius: 0%;
+        border-bottom-right-radius: 0%;
+
+        &:hover {
+          img {
+            filter: brightness(0%) invert(100%);
+          }
+        }
       }
     }
   }

@@ -23,6 +23,7 @@ export const modalState = atom<IModalState>({
     episode: [],
     url: '',
     created:'',
-    isModalOpen: false
+    isModalOpen: false,
+    slideDirection: 'none',
   },
 });

@@ -46,7 +46,8 @@ export const Pagination = styled.div`
         padding: 2.5% 0%;
 
         width: 65vw;
-        height: 75vh;
+        height: auto;
+        min-height: 75vh;
 
         border-bottom: 5px solid rgba(0, 0, 0, 0.2);
         border-radius: 50px;

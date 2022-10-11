@@ -1,4 +1,4 @@
 export interface ISearchBar {
-  onChange?: (event : React.ChangeEvent<HTMLInputElement>) => void
+  onChange?: (word: string) => void
   onSearch?: (word: string) => void
 }
