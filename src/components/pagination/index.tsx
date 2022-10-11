@@ -272,12 +272,14 @@ export const Pagination = () => {
                       currentSearch: value,
                     });
                   })
-                  .catch(() => setCurrentData(undefined));
+                  .catch(() => {
+                    setCurrentData(undefined);
+                  });
               }}
-              onChange={(e) => {
+              onChange={(searchedName) => {
                 axios
                   .get(
-                    `https://rickandmortyapi.com/api/character/?name=${e.target.value}`
+                    `https://rickandmortyapi.com/api/character/?name=${searchedName}`
                   )
                   .then((res) => {
                     const totalPagesArray = new Array(res.data.info.pages).fill(
@@ -289,7 +291,7 @@ export const Pagination = () => {
                       ...pagination,
                       totalPages: totalPagesArray,
                       currentPage: 1,
-                      currentSearch: e.target.value,
+                      currentSearch: searchedName,
                     });
                   })
                   .catch(() => {
@@ -299,7 +301,7 @@ export const Pagination = () => {
                       ...pagination,
                       totalPages: totalPagesArray,
                       currentPage: 1,
-                      currentSearch: e.target.value,
+                      currentSearch: searchedName,
                     });
                   });
               }}
