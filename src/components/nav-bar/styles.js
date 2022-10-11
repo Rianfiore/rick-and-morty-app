@@ -45,16 +45,16 @@ export const NavBar = styled.header`
         }
 
         to {
-          filter: grayscale(100%) sepia(100%) brightness(50%) contrast(150%)
-            hue-rotate(70deg) blur(3px);
+          filter: grayscale(100%) sepia(100%) brightness(40%) contrast(150%)
+            hue-rotate(70deg) blur(6px);
 
           opacity: 100%;
         }
       }
 
       &--unfocused {
-        filter: grayscale(100%) sepia(100%) brightness(35%) contrast(150%)
-          hue-rotate(70deg) blur(5px);
+        filter: grayscale(100%) sepia(100%) brightness(25%) contrast(150%)
+          hue-rotate(70deg) blur(8px);
       }
     }
 
@@ -64,7 +64,7 @@ export const NavBar = styled.header`
       .background {
         &__title,
         &__nav-bar {
-          filter: blur(2px) brightness(50%);
+          filter: blur(5px) brightness(40%);
         }
       }
     }
@@ -360,8 +360,8 @@ export const NavBar = styled.header`
     }
 
     &--unfocused {
-      filter: grayscale(100%) sepia(100%) brightness(50%) contrast(150%)
-        hue-rotate(70deg) blur(2px);
+      filter: grayscale(100%) sepia(100%) brightness(40%) contrast(150%)
+        hue-rotate(70deg) blur(5px);
     }
 
     &--inverse {
@@ -369,7 +369,7 @@ export const NavBar = styled.header`
       color: white;
 
       &--unfocused {
-        filter: brightness(50%) blur(2px);
+        filter: brightness(40%) blur(3px);
       }
 
       img {
