@@ -1,10 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
+  reactStrictMode: true,
   swcMinify: true,
-  images: {
-    domains: ["rickandmortyapi.com"],
-  },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
