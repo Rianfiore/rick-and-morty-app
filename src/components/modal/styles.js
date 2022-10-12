@@ -91,6 +91,10 @@ export const Modal = styled.div`
         justify-content: center;
         align-items: center;
 
+        &--inverse {
+          background-color: ${(props) => props.theme.neutralColor.base};
+        }
+
         &__title {
           text-transform: uppercase;
           letter-spacing: 5px;
@@ -98,6 +102,10 @@ export const Modal = styled.div`
           color: ${(props) => props.theme.secondaryColor.base};
 
           font-size: 30px;
+
+          &--inverse {
+            color: ${(props) => props.theme.primaryColor.base};
+          }
         }
 
         &__exit-button {
@@ -120,6 +128,11 @@ export const Modal = styled.div`
           justify-content: center;
 
           font-weight: 1000;
+
+          &--inverse {
+            border-color: ${(props) => props.theme.primaryColor.base};
+            color: ${(props) => props.theme.primaryColor.base};
+          }
 
           &:hover {
             cursor: pointer;
@@ -155,6 +168,18 @@ export const Modal = styled.div`
 
         p {
           color: ${(props) => props.theme.secondaryColor.base};
+        }
+
+        &--inverse {
+          background-color: ${(props) => props.theme.neutralColor.base};
+
+          h4 {
+            color: ${(props) => props.theme.primaryColor.base};
+          }
+
+          p {
+            color: ${(props) => props.theme.primaryColor.base};
+          }
         }
       }
 
