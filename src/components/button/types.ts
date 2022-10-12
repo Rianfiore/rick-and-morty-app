@@ -6,5 +6,6 @@ icon?: string | null,
 iconSize?: number,
 selected?: boolean,
 disabled?: boolean,
-orientation?: 'left' | 'right' | 'up' | 'down'
+orientation?: 'left' | 'right' | 'up' | 'down',
+size?: 'small' | 'medium' | 'large'
 }

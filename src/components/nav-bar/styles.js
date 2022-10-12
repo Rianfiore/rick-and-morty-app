@@ -5,7 +5,8 @@ export const NavBar = styled.header`
 
   .background {
     width: 100%;
-    height: 500px;
+    max-height: 800px;
+    height: 60vw;
 
     display: flex;
     justify-content: center;
@@ -16,16 +17,6 @@ export const NavBar = styled.header`
     animation: backgroundColor 2s forwards;
 
     transition: all 0.1s ease-in-out;
-
-    @keyframes backgroundColor {
-      from {
-        background-color: ${(props) => props.theme.secondaryColor.high};
-      }
-
-      to {
-        background-color: ${(props) => props.theme.primaryColor.dark};
-      }
-    }
 
     &__image {
       position: absolute;
@@ -84,25 +75,28 @@ export const NavBar = styled.header`
       &__border-image {
         background-color: ${(props) => props.theme.secondaryColor.dark};
 
-        width: 75px;
-        height: 75px;
+        max-width: 100px;
+        width: 7vw;
+
+        max-height: 100px;
+        height: 7vw;
 
         display: flex;
         align-items: center;
 
-        border: 5px solid ${(props) => props.theme.primaryColor.base};
+        border: 0.8vw solid ${(props) => props.theme.primaryColor.base};
 
-        padding: 40px;
+        padding: clamp(12px, 3.8vw, 100px);
 
         filter: drop-shadow(
           2px 2px 5px ${(props) => props.theme.dropShadowColor20}
         );
 
         &--left {
-          border-top-left-radius: 100px;
-          border-bottom-left-radius: 100px;
+          border-top-left-radius: 100%;
+          border-bottom-left-radius: 100%;
 
-          padding-left: 55px;
+          padding-left: clamp(12px, 5vw, 100px);
 
           filter: drop-shadow(
             0px 5px 0px ${(props) => props.theme.dropShadowColor20}
@@ -110,10 +104,10 @@ export const NavBar = styled.header`
         }
 
         &--right {
-          border-top-right-radius: 100px;
-          border-bottom-right-radius: 100px;
+          border-top-right-radius: 100%;
+          border-bottom-right-radius: 100%;
 
-          padding-right: 55px;
+          padding-right: clamp(12px, 5vw, 100px);
 
           filter: drop-shadow(
             0px 5px 0px ${(props) => props.theme.dropShadowColor20}
@@ -131,10 +125,10 @@ export const NavBar = styled.header`
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        gap: 0.8vw;
 
         text-transform: uppercase;
-        letter-spacing: 4px;
+        letter-spacing: 0.4vw;
 
         filter: drop-shadow(
           0px 5px 0px ${(props) => props.theme.dropShadowColor20}
@@ -148,14 +142,15 @@ export const NavBar = styled.header`
           }
 
           to {
-            font-size: 35px;
+            font-size: clamp(12px, 3vw, 50px);
           }
         }
 
         &__divider {
           background-color: ${(props) => props.theme.primaryColor.base};
-          border: 3px solid ${(props) => props.theme.primaryColor.base};
+          border: 0.4vw solid ${(props) => props.theme.primaryColor.base};
 
+          max-width: 1200px;
           animation: enterDivider 1s forwards;
 
           @keyframes enterDivider {
@@ -164,7 +159,7 @@ export const NavBar = styled.header`
             }
 
             to {
-              width: 750px;
+              width: 55vw;
             }
           }
         }
@@ -175,8 +170,10 @@ export const NavBar = styled.header`
       background-color: ${(props) => props.theme.secondaryColor.dark};
       color: ${(props) => props.theme.primaryColor.base};
 
+      max-width: 1400px;
       width: 50%;
-      height: 100px;
+      min-height: 100px;
+      height: 5vw;
 
       position: fixed;
 
@@ -204,26 +201,6 @@ export const NavBar = styled.header`
         animation: showNavBar 1s forwards;
       }
 
-      @keyframes hideNavBar {
-        from {
-          top: 0%;
-        }
-
-        to {
-          top: -14%;
-        }
-      }
-
-      @keyframes showNavBar {
-        from {
-          top: -14%;
-        }
-
-        to {
-          top: 0%;
-        }
-      }
-
       &--inverse {
         background-color: ${(props) => props.theme.primaryColor.base};
 
@@ -235,9 +212,21 @@ export const NavBar = styled.header`
         display: flex;
         align-items: center;
         justify-content: space-around;
-        gap: 450px;
+        gap: 25vw;
 
         &__logo {
+          min-width: 30px;
+          width: 4vw;
+          max-width: 50px;
+
+          min-height: 30px;
+          height: 4vw;
+          max-height: 50px;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
           &--inverse {
             filter: brightness(0%) invert(100%);
           }
@@ -246,6 +235,11 @@ export const NavBar = styled.header`
             &:hover {
               cursor: pointer;
             }
+          }
+
+          @media (max-width: 1000px) {
+            width: 6vw;
+            height: 6vw;
           }
         }
 
@@ -259,16 +253,16 @@ export const NavBar = styled.header`
 
           position: absolute;
 
-          gap: 4px;
+          gap: 0.2vw;
 
           &__title-one {
             display: flex;
             align-items: center;
 
-            gap: 8px;
+            gap: 0.3vw;
 
-            font-size: 20px;
-            letter-spacing: 3px;
+            font-size: clamp(8px, 1.3vw, 18px);
+            letter-spacing: 0.2vw;
 
             h6 {
               font-weight: 500;
@@ -277,7 +271,7 @@ export const NavBar = styled.header`
 
           &__divider {
             width: 100%;
-            border: 1px solid ${(props) => props.theme.primaryColor.base};
+            border: 0.03vw solid ${(props) => props.theme.primaryColor.base};
             background-color: ${(props) => props.theme.primaryColor.base};
 
             &--inverse {
@@ -287,8 +281,20 @@ export const NavBar = styled.header`
           }
 
           &__title-two {
-            font-size: 15px;
+            font-size: clamp(6px, 0.8vw, 12px);
             letter-spacing: 6px;
+          }
+
+          @media (max-width: 1000px) {
+            gap: 1vw;
+
+            &__title-one {
+              font-size: clamp(10px, 1.7vw, 18px);
+            }
+
+            &__title-two {
+              font-size: clamp(7px, 1.2vw, 12px);
+            }
           }
         }
 
@@ -303,10 +309,13 @@ export const NavBar = styled.header`
           background-color: transparent;
           color: ${(props) => props.theme.primaryColor.base};
 
-          padding: 5px 10px;
+          display: flex;
+          align-items: center;
 
-          border: 2px solid ${(props) => props.theme.primaryColor.base};
-          border-radius: 10px;
+          padding: 0.25vw 0.7vw;
+
+          border: 0.15vw solid ${(props) => props.theme.primaryColor.base};
+          border-radius: 0.3vw;
 
           &--inverse {
             border-color: ${(props) => props.theme.secondaryColor.base};
@@ -328,6 +337,7 @@ export const NavBar = styled.header`
 
           a {
             font-weight: 700;
+            font-size: clamp(9px, 0.5vw, 13px);
           }
 
           &:hover {
@@ -346,6 +356,71 @@ export const NavBar = styled.header`
             transition: all 0.1s ease-in-out;
           }
         }
+
+        @media (min-width: 2000px) {
+          gap: 20vw;
+        }
+
+        @media (max-width: 1000px) {
+          ul {
+            gap: 10vw;
+          }
+
+          &__api-doc {
+            padding: 4px 5px;
+            border-radius: clamp(3px, 0.8vw, 5px);
+          }
+        }
+
+        @media (max-width: 570px) {
+          ul {
+            gap: 2vw;
+            flex-direction: column;
+          }
+        }
+      }
+
+      @keyframes hideNavBar {
+        from {
+          top: 0%;
+        }
+
+        to {
+          top: -20vw;
+        }
+      }
+
+      @keyframes showNavBar {
+        from {
+          top: -20vw;
+        }
+
+        to {
+          top: 0%;
+        }
+      }
+
+      @media (max-width: 1000px) {
+        width: 100%;
+        min-height: 95px;
+      }
+
+      @media (max-width: 650px) {
+        min-height: 75px;
+      }
+
+      @media (max-width: 400px) {
+        min-height: 65px;
+      }
+    }
+
+    @keyframes backgroundColor {
+      from {
+        background-color: ${(props) => props.theme.secondaryColor.high};
+      }
+
+      to {
+        background-color: ${(props) => props.theme.primaryColor.dark};
       }
     }
   }
@@ -405,11 +480,11 @@ export const NavBar = styled.header`
     }
 
     &--opened {
-      animation: openNavBar 1s ease-in forwards !important;
+      animation: openNavBar2000 1s ease-in forwards !important;
     }
 
     &--closed {
-      animation: closedNavBar 0.6s forwards !important;
+      animation: closedNavBar2000 0.6s forwards !important;
     }
 
     &--show {
@@ -420,23 +495,87 @@ export const NavBar = styled.header`
       animation: hideButton 1s forwards;
     }
 
-    @keyframes openNavBar {
-      from {
-        top: 0px;
+    @keyframes openNavBar400 {
+      0% {
+        top: -5px;
       }
 
-      to {
-        top: 100px;
+      50% {
+        top: -5px;
+      }
+
+      100% {
+        top: 65px;
       }
     }
 
-    @keyframes closedNavBar {
-      from {
-        top: 100px;
+    @keyframes openNavBar650 {
+      0% {
+        top: -5px;
       }
 
-      to {
-        top: 0px;
+      50% {
+        top: -5px;
+      }
+
+      100% {
+        top: 75px;
+      }
+    }
+
+    @keyframes openNavBar2000 {
+      0% {
+        top: -5px;
+      }
+
+      50% {
+        top: -5px;
+      }
+
+      100% {
+        top: 95px;
+      }
+    }
+
+    @keyframes openNavBarAfter2000 {
+      0% {
+        top: -5px;
+      }
+
+      50% {
+        top: -5px;
+      }
+
+      100% {
+        top: 5.1vw;
+      }
+    }
+
+    @keyframes closedNavBar2000 {
+      0% {
+        top: 95px;
+      }
+
+      50% {
+        top: -5px;
+      }
+
+      100% {
+        top: -5px;
+      }
+    }
+
+    @keyframes closedNavBarAfter2000 {
+      0% {
+        top: 5.1vw;
+      }
+
+      50% {
+        top: -5px;
+      }
+
+      100% {
+        top: -5px;
       }
     }
 
@@ -462,6 +601,28 @@ export const NavBar = styled.header`
 
     img {
       transform: rotate(90deg);
+    }
+
+    @media (min-width: 2000px) {
+      &--opened {
+        animation: openNavBarAfter2000 1s ease-in forwards !important;
+      }
+
+      &--closed {
+        animation: closedNavBarAfter2000 0.6s forwards !important;
+      }
+    }
+
+    @media (max-width: 650px) {
+      &--opened {
+        animation: openNavBar650 1s ease-in forwards !important;
+      }
+    }
+
+    @media (max-width: 400px) {
+      &--opened {
+        animation: openNavBar400 1s ease-in forwards !important;
+      }
     }
   }
 `;

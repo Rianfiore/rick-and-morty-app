@@ -27,6 +27,7 @@ const PageIndicator = () => {
         <div className="pagination__footer__page-indicator">
           <div className="button__page-indicator--left">
             <Button
+              size="small"
               disabled={fivePages[0] === 1}
               type="button"
               icon={`/images/arrow${isDarkTheme ? "-inverse" : ""}.png`}
@@ -172,6 +173,7 @@ const PageIndicator = () => {
           )}
           <div className="button__page-indicator--right">
             <Button
+              size="small"
               disabled={fivePages[4] === totalPages.length}
               type="button"
               icon={`/images/arrow${isDarkTheme ? "-inverse" : ""}.png`}

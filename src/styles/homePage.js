@@ -28,9 +28,8 @@ export const ModalInterface = styled.div`
 
   .modal-interface__button {
     position: absolute;
-    z-index: 0;
-
-    top: calc(50% - 50px);
+    z-index: 4;
+    top: calc(50% - 2.5vw);
 
     pointer-events: fill;
 

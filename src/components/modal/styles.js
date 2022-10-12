@@ -2,10 +2,14 @@ import styled from "styled-components";
 
 export const Modal = styled.div`
   .modal {
-    position: fixed;
+    position: absolute;
     z-index: 2;
-    left: calc(50% - 425px);
-    top: calc(50% - 275px);
+
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     filter: drop-shadow(
       10px 10px 10px ${(props) => props.theme.dropShadowColor20}
@@ -27,20 +31,19 @@ export const Modal = styled.div`
     &--prev {
       animation: prevModal 1s forwards !important;
     }
-
     @keyframes enterModal {
       from {
         top: 100%;
       }
 
       to {
-        top: calc(50% - 275px);
+        top: 0%;
       }
     }
 
     @keyframes exitModal {
       from {
-        top: calc(50% - 275px);
+        top: 0%;
       }
 
       to {
@@ -50,7 +53,7 @@ export const Modal = styled.div`
 
     @keyframes nextModal {
       0% {
-        left: calc(50% - 425px);
+        left: 0%;
       }
 
       100% {
@@ -60,7 +63,7 @@ export const Modal = styled.div`
 
     @keyframes prevModal {
       0% {
-        left: calc(50% - 425px);
+        left: 0%;
       }
 
       100% {
@@ -69,27 +72,29 @@ export const Modal = styled.div`
     }
 
     &__container {
-      background-color: ${(props) => props.theme.secondaryColor.base};
+      background-color: ${(props) => props.theme.secondaryColor.dark};
 
       display: flex;
       flex-direction: column;
       align-items: center;
 
-      width: 850px;
-      height: 550px;
+      width: 40vw;
+      height: auto;
 
-      border-radius: 50px;
+      border-radius: 2.5vw;
 
       overflow: hidden;
       &__header {
         background-color: ${(props) => props.theme.primaryColor.base};
 
         width: 100%;
-        height: 20%;
+        height: auto;
 
         display: flex;
         justify-content: center;
         align-items: center;
+
+        padding: 1.5vw 0vw;
 
         &--inverse {
           background-color: ${(props) => props.theme.neutralColor.base};
@@ -97,11 +102,11 @@ export const Modal = styled.div`
 
         &__title {
           text-transform: uppercase;
-          letter-spacing: 5px;
+          letter-spacing: 0.5vw;
 
           color: ${(props) => props.theme.secondaryColor.base};
 
-          font-size: 30px;
+          font-size: 1.5vw;
 
           &--inverse {
             color: ${(props) => props.theme.primaryColor.base};
@@ -112,16 +117,18 @@ export const Modal = styled.div`
           background-color: transparent;
           color: ${(props) => props.theme.secondaryColor.base};
 
-          border: 3px solid ${(props) => props.theme.secondaryColor.base};
+          border: 0.25vw solid ${(props) => props.theme.secondaryColor.base};
           border-radius: 150px;
 
-          width: 25px;
-          height: 25px;
+          width: 1.2vw;
+          height: 1.2vw;
 
           position: absolute;
-          left: 93%;
-          top: 5%;
-          padding: 5px;
+          right: 32vw;
+
+          padding: 0.5vw;
+
+          font-size: 0.6vw;
 
           display: flex;
           align-items: center;
@@ -147,19 +154,22 @@ export const Modal = styled.div`
       }
 
       &__content {
-        height: 70%;
-
-        font-size: 20px;
+        font-size: 1.3vw;
         color: ${(props) => props.theme.primaryColor.base};
+
+        gap: 2vw;
+
+        padding: 1.5vw 0vw;
       }
 
       &__footer {
         background-color: ${(props) => props.theme.primaryColor.base};
-        height: 13%;
+        width: 100%;
+        height: auto;
 
-        padding: 0px 15px;
+        padding: 1.2vw 0vw;
 
-        font-size: 15px;
+        font-size: 0.8vw;
         color: ${(props) => props.theme.secondaryColor.light};
 
         h4 {
@@ -192,51 +202,62 @@ export const Modal = styled.div`
 
         width: 100%;
 
-        gap: 20px;
-
-        padding: 15px 0px;
-
         &__main {
           display: flex;
           justify-content: space-between;
           align-items: center;
 
-          gap: 100px;
+          gap: 3vw;
 
           &__photo {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 1.2vw;
 
             &__img {
               display: flex;
               justify-content: center;
 
-              border: 5px solid ${(props) => props.theme.primaryColor.base};
+              width: 7vw;
+              height: 7vw;
+
+              border: 0.45vw solid ${(props) => props.theme.primaryColor.base};
               border-radius: 100%;
 
               img {
                 border-radius: 100%;
               }
             }
+
+            &__status {
+              font-size: 1vw;
+              letter-spacing: 0.1vw;
+              text-transform: uppercase;
+            }
           }
 
           &__title {
-            letter-spacing: 5px;
+            letter-spacing: 0.7vw;
             color: ${(props) => props.theme.primaryColor.base};
 
-            width: 450px;
+            width: 20vw;
 
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 25px;
+            gap: 1vw;
 
             text-align: center;
 
-            h1 {
-              font-size: clamp(20px, 2rem, 45px);
+            &__name {
+              font-size: 1.8vw;
+              text-transform: uppercase;
+            }
+
+            &__origin {
+              font-size: 1vw;
+              letter-spacing: 0.25vw;
               text-transform: uppercase;
             }
           }
@@ -245,12 +266,12 @@ export const Modal = styled.div`
         &__details {
           display: flex;
           justify-content: space-around;
-          gap: 150px;
+          gap: 5vw;
         }
 
         &__label {
           display: flex;
-          gap: 10px;
+          gap: 0.3vw;
 
           h4 {
             text-transform: uppercase;

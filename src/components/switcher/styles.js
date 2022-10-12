@@ -3,16 +3,22 @@ import styled from "styled-components";
 export const Switcher = styled.div`
   .switcher {
     background-color: ${(props) => props.theme.switchColor.background};
-    width: 60px;
-    height: 30px;
-    border-radius: 30px;
+
+    min-width: 35px;
+    width: 3.5vw;
+    min-height: 15px;
+    height: 1.5vw;
+
+    border-radius: 2.7vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     input {
-      width: 60px;
-      height: 30px;
+      min-width: 40px;
+      width: 3.5vw;
+      min-height: 15px;
+      height: 1.5vw;
       opacity: 0;
       position: absolute;
       z-index: 2;
@@ -24,10 +30,12 @@ export const Switcher = styled.div`
 
     &__circle {
       background-color: ${(props) => props.theme.switchColor.circle};
-      width: 30px;
-      height: 30px;
+      min-width: 15px;
+      width: 1.5vw;
+      min-height: 15px;
+      height: 1.5vw;
       position: fixed;
-      border-radius: 20px;
+      border-radius: 2vw;
 
       filter: drop-shadow(
         2px 2px 2px ${(props) => props.theme.dropShadowColor20}
@@ -62,22 +70,41 @@ export const Switcher = styled.div`
       }
     }
 
-    &__icon-one {
-      width: 50%;
-      height: 100%;
+    &__icon-one,
+    &__icon-two {
+      min-width: 10px;
+      width: 4vw;
+      max-width: 25px;
+
+      min-height: 10px;
+      height: 4vw;
+      max-height: 25px;
+
+      padding: 0.3vw;
 
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    &__icon-two {
-      width: 50%;
-      height: 100%;
+    @media (max-width: 1000px) {
+      &__icon-one,
+      &__icon-two {
+        width: 1vw;
+        height: 1vw;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+        position: relative;
+      }
+    }
+
+    @media (max-width: 550px) {
+      &__icon-one {
+        margin-left: 0.5vw;
+      }
+
+      &__icon-two {
+        margin-right: 0.5vw;
+      }
     }
   }
 `;

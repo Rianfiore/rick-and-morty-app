@@ -30,7 +30,7 @@ export const Card = ({ id, img, title }: ICard) => {
           {isHovered && (
             <div className="card__details">
               <button type="button" className="card__details__button">
-                Ver detalhes
+                Show details
               </button>
             </div>
           )}
@@ -46,8 +46,8 @@ export const Card = ({ id, img, title }: ICard) => {
                     isDarkTheme ? "-inverse" : ""
                   }.png`}
                   alt=""
-                  width={150}
-                  height={150}
+                  width={1500}
+                  height={1500}
                 />
               </div>
 
@@ -55,8 +55,8 @@ export const Card = ({ id, img, title }: ICard) => {
                 className="card__content__photo__img"
                 src={img}
                 alt=""
-                width={100}
-                height={100}
+                width={250}
+                height={250}
               />
             </div>
             <div className="card__content__text-box">

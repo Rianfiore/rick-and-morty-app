@@ -120,12 +120,12 @@ export const Modal = () => {
           >
             <div className="modal__container__footer__details">
               <div className="modal__container__footer__label">
-                <h4>Location: </h4>
+                <h4>Last Known Location: </h4>
                 <p>{modal.location.name}</p>
               </div>
               {lastEpisode && (
                 <div className="modal__container__footer__label">
-                  <h4>Episode:</h4>
+                  <h4>First seen in:</h4>
                   <p>{lastEpisode.name}</p>
                 </div>
               )}

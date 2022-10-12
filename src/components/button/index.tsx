@@ -8,11 +8,13 @@ export const Button = ({
   children,
   icon = null,
   orientation = "right",
+  size = "medium",
   iconSize = 30,
   selected = false,
   disabled = false,
   ...args
 }: IButton) => {
+  console.log(size);
   return (
     <S.Button>
       <button
@@ -24,7 +26,9 @@ export const Button = ({
         {...args}
       >
         {icon ? (
-          <Image src={icon} alt="" width={iconSize} height={iconSize} />
+          <div className={`button__image button__image--${size}`}>
+            <Image src={icon} alt="" width={iconSize} height={iconSize} />
+          </div>
         ) : (
           children
         )}
