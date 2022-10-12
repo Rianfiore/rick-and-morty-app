@@ -29,13 +29,13 @@ export const Pagination = styled.div`
         width: 65vw;
         height: 75vh;
 
-        color: #006400;
+        color: ${(props) => props.theme.primaryColor.base};
         text-transform: uppercase;
         font-size: 40px;
       }
 
       &__cards {
-        background-color: white;
+        background-color: ${(props) => props.theme.neutralColor.high};
         display: flex;
         justify-content: center;
         align-items: center;
@@ -49,10 +49,12 @@ export const Pagination = styled.div`
         height: auto;
         min-height: 75vh;
 
-        border-bottom: 5px solid rgba(0, 0, 0, 0.2);
+        border-bottom: 5px solid ${(props) => props.theme.dropShadowColor20};
         border-radius: 50px;
 
-        filter: drop-shadow(5px 5px 2px rgba(0, 0, 0, 0.2));
+        filter: drop-shadow(
+          5px 5px 2px ${(props) => props.theme.dropShadowColor20}
+        );
       }
     }
 
@@ -88,7 +90,7 @@ export const Pagination = styled.div`
               right: 56.8%;
 
               &__truncated-point {
-                background-color: #006400;
+                background-color: ${(props) => props.theme.primaryColor.base};
                 width: 5px;
                 height: 5px;
                 border-radius: 100%;
@@ -105,7 +107,7 @@ export const Pagination = styled.div`
               left: 56.8%;
 
               &__truncated-point {
-                background-color: #006400;
+                background-color: ${(props) => props.theme.primaryColor.base};
                 width: 5px;
                 height: 5px;
                 border-radius: 100%;

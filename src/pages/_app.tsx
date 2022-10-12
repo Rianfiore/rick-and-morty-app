@@ -6,8 +6,8 @@ import type { AppProps } from "next/app";
 import * as S from "styles/app";
 
 //Components
-import { NavBar } from "components";
-import { createGlobalStyle } from "styled-components";
+import { NavBar, ThemeController } from "components";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { RecoilRoot } from "recoil";
 
 const GlobalStyle = createGlobalStyle`
@@ -40,10 +40,12 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <GlobalStyle />
       <RecoilRoot>
-        <S.App>
-          <NavBar />
-          <Component {...pageProps} />
-        </S.App>
+        <ThemeController>
+          <S.App>
+            <NavBar />
+            <Component {...pageProps} />
+          </S.App>
+        </ThemeController>
       </RecoilRoot>
     </>
   );

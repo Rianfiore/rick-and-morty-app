@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HomePage = styled.main`
-  background: url("/images/main-background.jpg");
+  background: ${(props) => props.theme.backgroundMain};
   background-position: center;
   background-size: cover;
   width: 100%;
@@ -28,7 +28,7 @@ export const ModalInterface = styled.div`
 
   .modal-interface__button {
     position: absolute;
-    z-index: 2;
+    z-index: 0;
 
     top: calc(50% - 50px);
 
@@ -43,7 +43,7 @@ export const ModalInterface = styled.div`
     }
 
     button {
-      background-color: #e5e5e5;
+      background-color: ${(props) => props.theme.secondaryColor.base};
     }
   }
 `;
