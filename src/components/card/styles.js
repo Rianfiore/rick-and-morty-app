@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Card = styled.div`
   .card {
-    background: url("/images/galaxy.jpg");
+    background: ${(props) => props.theme.backgroundGalaxy};
     background-size: contain;
 
     display: flex;
@@ -13,10 +13,12 @@ export const Card = styled.div`
     width: 120px;
     height: 180px;
 
-    border: 3px solid white;
+    border: 3px solid ${(props) => props.theme.secondaryColor.dark};
     border-radius: 20px;
 
-    filter: drop-shadow(5px 5px 0px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(
+      5px 5px 0px ${(props) => props.theme.dropShadowColor20}
+    );
 
     transition: all 0.1s ease-in-out;
 
@@ -32,7 +34,7 @@ export const Card = styled.div`
     }
 
     &__details {
-      background-color: rgb(92, 173, 74, 0.5);
+      background-color: ${(props) => props.theme.primaryColor.lightTransparent};
 
       position: absolute;
 
@@ -43,11 +45,11 @@ export const Card = styled.div`
       justify-content: center;
       align-items: center;
 
-      border-radius: 20px;
+      border-radius: 16px;
 
       &__button {
         background-color: transparent;
-        color: white;
+        color: ${(props) => props.theme.secondaryColor.dark};
 
         border: none;
 
@@ -77,7 +79,7 @@ export const Card = styled.div`
       }
 
       &__photo {
-        background: url("/images/portal.png") no-repeat;
+        background: ${(props) => props.theme.backgroundPortal} no-repeat;
         background-size: 125px 125px;
         background-position: center;
 
@@ -94,12 +96,14 @@ export const Card = styled.div`
           position: absolute;
           z-index: 1;
 
-          filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(
+            2px 2px 0px ${(props) => props.theme.dropShadowColor50}
+          );
 
           animation: rotating 50s linear infinite;
 
           img {
-            filter: brightness(65%) contrast(200%);
+            filter: ${(props) => props.theme.backgroundPortalFilter};
           }
         }
 
@@ -122,10 +126,20 @@ export const Card = styled.div`
         &__name {
           font-size: 13px;
           text-align: center;
-          color: #006400;
-          filter: drop-shadow(1px 0px 0px white) drop-shadow(0px 1px 0px white)
-            drop-shadow(-1px 0px 0px white) drop-shadow(0px -1px 0px white)
-            drop-shadow(2px 2px 1px rgba(0, 0, 0, 0.5));
+          color: ${(props) => props.theme.primaryColor.base};
+          filter: drop-shadow(
+              1px 0px 0px ${(props) => props.theme.secondaryColor.dark}
+            )
+            drop-shadow(
+              0px 1px 0px ${(props) => props.theme.secondaryColor.dark}
+            )
+            drop-shadow(
+              -1px 0px 0px ${(props) => props.theme.secondaryColor.dark}
+            )
+            drop-shadow(
+              0px -1px 0px ${(props) => props.theme.secondaryColor.dark}
+            )
+            drop-shadow(2px 2px 1px ${(props) => props.theme.dropShadowColor50});
         }
       }
     }

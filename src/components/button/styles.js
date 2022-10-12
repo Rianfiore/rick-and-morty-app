@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Button = styled.div`
   .button {
-    color: #006400;
-    background-color: white;
+    color: ${(props) => props.theme.primaryColor.base};
+    background-color: ${(props) => props.theme.secondaryColor.base};
 
     display: flex;
     justify-content: center;
@@ -12,13 +12,13 @@ export const Button = styled.div`
     padding: 5px;
 
     border-radius: 100%;
-    border: 5px solid #006400;
+    border: 5px solid ${(props) => props.theme.primaryColor.base};
 
     transition: all 0.1s ease-in-out;
 
     &:hover {
       cursor: pointer;
-      background-color: #efefef;
+      background-color: ${(props) => props.theme.secondaryColor.base};
       transform: scale(105%);
 
       &:active {
@@ -39,19 +39,19 @@ export const Button = styled.div`
 
       font-weight: 1000;
 
-      border: 2px solid #006400;
+      border: 2px solid ${(props) => props.theme.primaryColor.base};
     }
 
     &--selected {
-      background-color: #006400;
-      color: white;
+      background-color: ${(props) => props.theme.primaryColor.base};
+      color: ${(props) => props.theme.secondaryColor.high};
 
       &:hover {
         cursor: pointer;
-        background-color: #006400;
+        background-color: ${(props) => props.theme.primaryColor.base};
         transform: scale(105%);
 
-        color: white;
+        color: ${(props) => props.theme.secondaryColor.high};
 
         &:active {
           transform: scale(95%);

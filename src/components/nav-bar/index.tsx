@@ -1,15 +1,18 @@
 import * as S from "./styles";
 import Image from "next/image";
-
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { modalState } from "recoil/modal/atoms";
 import useScrollPosition from "utils/hooks/useScrollPosition";
 import { useState } from "react";
+import { themeState } from "recoil/theme/atom";
+import { Switcher } from "components";
 
 export const NavBar = () => {
   const modal = useRecoilValue(modalState);
   const scrollPosition = useScrollPosition();
   const [isOpenNavBar, setIsOpenNavBar] = useState(false);
+  const [, setTheme] = useRecoilState(themeState);
+  const isDarkTheme = useRecoilValue(themeState);
 
   return (
     <>
@@ -24,11 +27,22 @@ export const NavBar = () => {
               modal.isModalOpen ? "background__image--unfocused" : ""
             }`}
           >
-            <Image src="/images/header-background.jpg" alt="" layout="fill" />
+            <Image
+              src={`/images/header-background${
+                isDarkTheme ? "-inverse" : ""
+              }.jpg`}
+              alt=""
+              layout="fill"
+            />
           </div>
           <div className="background__title">
             <div className="background__title__border-image background__title__border-image--left">
-              <Image src="/images/rick.png" alt="" width={100} height={150} />
+              <Image
+                src={`/images/rick${isDarkTheme ? "-inverse" : ""}.png`}
+                alt=""
+                width={100}
+                height={150}
+              />
             </div>
             <div className="background__title__text">
               <hr className="background__title__text__divider" />
@@ -36,14 +50,23 @@ export const NavBar = () => {
               <hr className="background__title__text__divider" />
             </div>
             <div className="background__title__border-image background__title__border-image--right">
-              <Image src="/images/morty.png" alt="" width={100} height={150} />
+              <Image
+                src={`/images/morty${isDarkTheme ? "-inverse" : ""}.png`}
+                alt=""
+                width={100}
+                height={150}
+              />
             </div>
           </div>
 
           <button
             onClick={() => setIsOpenNavBar(!isOpenNavBar)}
             className={`action-nav-bar ${
-              scrollPosition >= 400 ? "action-nav-bar--inverse" : ""
+              scrollPosition >= 400
+                ? isDarkTheme
+                  ? "action-nav-bar--inverse"
+                  : "action-nav-bar--inverse action-nav-bar--arrow-inverse"
+                : ""
             } action-nav-bar--${
               isOpenNavBar ? "opened" : "closed"
             } action-nav-bar--${scrollPosition >= 200 ? "show" : "hide"} ${
@@ -54,7 +77,14 @@ export const NavBar = () => {
                 : ""
             }`}
           >
-            <Image src="/images/arrow.png" alt="" width={20} height={20} />
+            <Image
+              src={`/images/arrow${
+                isDarkTheme ? (scrollPosition < 400 ? "-inverse" : "") : ""
+              }.png`}
+              alt=""
+              width={20}
+              height={20}
+            />
           </button>
 
           <div
@@ -67,12 +97,19 @@ export const NavBar = () => {
             <nav className="background__nav-bar__content">
               <div
                 className={`background__nav-bar__content__logo ${
-                  scrollPosition >= 400
+                  scrollPosition >= 400 && !isDarkTheme
                     ? "background__nav-bar__content__logo--inverse"
                     : ""
                 }`}
               >
-                <Image src="/images/logo.png" alt="" width={50} height={50} />
+                <Image
+                  src={`/images/logo${
+                    isDarkTheme ? (scrollPosition < 400 ? "-inverse" : "") : ""
+                  }.png`}
+                  alt=""
+                  width={50}
+                  height={50}
+                />
               </div>
               <div className="background__nav-bar__content__title">
                 <div className="background__nav-bar__content__title__title-one">
@@ -92,6 +129,7 @@ export const NavBar = () => {
                 </h3>
               </div>
               <ul>
+                <Switcher />
                 <li>
                   <button
                     className={`background__nav-bar__content__api-doc ${

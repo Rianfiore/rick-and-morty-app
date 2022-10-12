@@ -9,7 +9,7 @@ export const NavBar = styled.header`
 
     display: flex;
     justify-content: center;
-    background-color: white;
+    background-color: ${(props) => props.theme.primaryColor.dark};
 
     overflow: hidden;
 
@@ -19,11 +19,11 @@ export const NavBar = styled.header`
 
     @keyframes backgroundColor {
       from {
-        background-color: #fff;
+        background-color: ${(props) => props.theme.secondaryColor.high};
       }
 
       to {
-        background-color: #006400;
+        background-color: ${(props) => props.theme.primaryColor.dark};
       }
     }
 
@@ -38,15 +38,13 @@ export const NavBar = styled.header`
 
       @keyframes enterBackground {
         from {
-          filter: grayscale(100%) sepia(100%) brightness(100%) contrast(150%)
-            hue-rotate(0deg) blur(0px);
+          filter: brightness(100%) contrast(150%) blur(0px);
 
           opacity: 0%;
         }
 
         to {
-          filter: grayscale(100%) sepia(100%) brightness(40%) contrast(150%)
-            hue-rotate(70deg) blur(6px);
+          filter: brightness(80%) contrast(150%) blur(6px);
 
           opacity: 100%;
         }
@@ -59,7 +57,7 @@ export const NavBar = styled.header`
     }
 
     &--unfocused {
-      background-color: rgba(0, 100, 0, 0.5);
+      background-color: ${(props) => props.theme.primaryColor.unfocused};
 
       .background {
         &__title,
@@ -77,12 +75,14 @@ export const NavBar = styled.header`
       padding-bottom: 50px;
       padding-top: 100px;
 
-      filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.1));
+      filter: drop-shadow(
+        2px 2px 5px ${(props) => props.theme.dropShadowColor20}
+      );
 
       user-select: none;
 
       &__border-image {
-        background-color: white;
+        background-color: ${(props) => props.theme.secondaryColor.dark};
 
         width: 75px;
         height: 75px;
@@ -90,11 +90,13 @@ export const NavBar = styled.header`
         display: flex;
         align-items: center;
 
-        border: 5px solid #006400;
+        border: 5px solid ${(props) => props.theme.primaryColor.base};
 
         padding: 40px;
 
-        filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.1));
+        filter: drop-shadow(
+          2px 2px 5px ${(props) => props.theme.dropShadowColor20}
+        );
 
         &--left {
           border-top-left-radius: 100px;
@@ -102,7 +104,9 @@ export const NavBar = styled.header`
 
           padding-left: 55px;
 
-          filter: drop-shadow(0px 5px 0px rgba(0, 0, 0, 0.2));
+          filter: drop-shadow(
+            0px 5px 0px ${(props) => props.theme.dropShadowColor20}
+          );
         }
 
         &--right {
@@ -111,13 +115,15 @@ export const NavBar = styled.header`
 
           padding-right: 55px;
 
-          filter: drop-shadow(0px 5px 0px rgba(0, 0, 0, 0.2));
+          filter: drop-shadow(
+            0px 5px 0px ${(props) => props.theme.dropShadowColor20}
+          );
         }
       }
 
       &__text {
-        background-color: white;
-        color: #006400;
+        background-color: ${(props) => props.theme.secondaryColor.dark};
+        color: ${(props) => props.theme.primaryColor.base};
 
         font-family: "Righteous", cursive;
         font-weight: 1000;
@@ -130,7 +136,9 @@ export const NavBar = styled.header`
         text-transform: uppercase;
         letter-spacing: 4px;
 
-        filter: drop-shadow(0px 5px 0px rgba(0, 0, 0, 0.2));
+        filter: drop-shadow(
+          0px 5px 0px ${(props) => props.theme.dropShadowColor20}
+        );
 
         animation: enterText 1s forwards;
 
@@ -145,8 +153,8 @@ export const NavBar = styled.header`
         }
 
         &__divider {
-          background-color: #006400;
-          border: 3px solid #006400;
+          background-color: ${(props) => props.theme.primaryColor.base};
+          border: 3px solid ${(props) => props.theme.primaryColor.base};
 
           animation: enterDivider 1s forwards;
 
@@ -164,8 +172,8 @@ export const NavBar = styled.header`
     }
 
     &__nav-bar {
-      background-color: white;
-      color: #006400;
+      background-color: ${(props) => props.theme.secondaryColor.dark};
+      color: ${(props) => props.theme.primaryColor.base};
 
       width: 50%;
       height: 100px;
@@ -180,9 +188,11 @@ export const NavBar = styled.header`
 
       border-bottom-left-radius: 25px;
       border-bottom-right-radius: 25px;
-      border-bottom: 5px solid rgba(0, 0, 0, 0.2);
+      border-bottom: 5px solid ${(props) => props.theme.dropShadowColor20};
 
-      filter: drop-shadow(2.5px 2.5px 10px rgba(0, 0, 0, 0.2));
+      filter: drop-shadow(
+        2.5px 2.5px 10px ${(props) => props.theme.dropShadowColor20}
+      );
 
       transition: all 0.2s ease-in-out;
 
@@ -215,9 +225,9 @@ export const NavBar = styled.header`
       }
 
       &--inverse {
-        background-color: rgba(0, 100, 0, 1);
+        background-color: ${(props) => props.theme.primaryColor.base};
 
-        color: white;
+        color: ${(props) => props.theme.secondaryColor.base};
       }
 
       &__content {
@@ -267,12 +277,12 @@ export const NavBar = styled.header`
 
           &__divider {
             width: 100%;
-            border: 1px solid #006400;
-            background-color: #006400;
+            border: 1px solid ${(props) => props.theme.primaryColor.base};
+            background-color: ${(props) => props.theme.primaryColor.base};
 
             &--inverse {
-              border: 1px solid white;
-              background-color: white;
+              border: 1px solid ${(props) => props.theme.secondaryColor.high};
+              background-color: ${(props) => props.theme.secondaryColor.high};
             }
           }
 
@@ -284,22 +294,36 @@ export const NavBar = styled.header`
 
         ul {
           display: flex;
+          align-items: center;
           justify-content: space-between;
           gap: 3vw;
         }
 
         &__api-doc {
           background-color: transparent;
-          color: #006400;
+          color: ${(props) => props.theme.primaryColor.base};
 
           padding: 5px 10px;
 
-          border: 2px solid #006400;
+          border: 2px solid ${(props) => props.theme.primaryColor.base};
           border-radius: 10px;
 
           &--inverse {
-            border-color: white;
-            color: white;
+            border-color: ${(props) => props.theme.secondaryColor.base};
+            color: ${(props) => props.theme.secondaryColor.dark};
+
+            &:hover {
+              cursor: pointer;
+
+              background-color: ${(props) =>
+                props.theme.secondaryColor.dark} !important;
+              color: ${(props) => props.theme.primaryColor.base} !important;
+
+              border-color: ${(props) =>
+                props.theme.secondaryColor.dark} !important;
+
+              transition: all 0.2s ease-in-out;
+            }
           }
 
           a {
@@ -309,15 +333,15 @@ export const NavBar = styled.header`
           &:hover {
             cursor: pointer;
 
-            background-color: #006400;
-            color: white;
+            background-color: ${(props) => props.theme.primaryColor.base};
+            color: ${(props) => props.theme.secondaryColor.base};
 
             transition: all 0.2s ease-in-out;
           }
 
           &:active {
-            background-color: #5cad4a;
-            border-color: #5cad4a;
+            background-color: ${(props) => props.theme.primaryColor.light};
+            border-color: ${(props) => props.theme.primaryColor.light};
 
             transition: all 0.1s ease-in-out;
           }
@@ -327,8 +351,7 @@ export const NavBar = styled.header`
   }
 
   .action-nav-bar {
-    background-color: white;
-
+    background-color: ${(props) => props.theme.secondaryColor.dark};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -340,13 +363,15 @@ export const NavBar = styled.header`
     height: 35px;
 
     border: none;
-    border-bottom: 5px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 5px solid ${(props) => props.theme.dropShadowColor20};
     border-bottom-left-radius: 100%;
     border-bottom-right-radius: 100%;
 
-    color: #006400;
+    color: ${(props) => props.theme.primaryColor.base};
 
-    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(
+      2px 2px 2px ${(props) => props.theme.dropShadowColor20}
+    );
 
     transition: 0.2s all ease-in-out;
 
@@ -364,16 +389,18 @@ export const NavBar = styled.header`
         hue-rotate(70deg) blur(5px);
     }
 
+    &--arrow-inverse {
+      img {
+        filter: brightness(0%) invert(100%);
+      }
+    }
+
     &--inverse {
-      background-color: #006400;
-      color: white;
+      background-color: ${(props) => props.theme.primaryColor.base};
+      color: ${(props) => props.theme.secondaryColor.high};
 
       &--unfocused {
         filter: brightness(40%) blur(3px);
-      }
-
-      img {
-        filter: brightness(0%) invert(100%);
       }
     }
 

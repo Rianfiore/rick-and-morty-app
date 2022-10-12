@@ -4,7 +4,7 @@ export const SearchBar = styled.div`
   display: flex;
 
   .search-bar {
-    background-color: #006400;
+    background-color: ${(props) => props.theme.primaryColor.base};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,20 +17,20 @@ export const SearchBar = styled.div`
 
     &:hover {
       .search-bar__input {
-        background-color: #f9f9f9;
+        background-color: ${(props) => props.theme.secondaryColor.base};
       }
 
       .search-bar__button {
-        background-color: #f9f9f9;
+        background-color: ${(props) => props.theme.secondaryColor.base};
 
         &:hover {
-          background-color: #006400;
+          background-color: ${(props) => props.theme.primaryColor.base};
           cursor: pointer;
 
           transition: all 0.2s ease-in-out;
 
           &:active {
-            background-color: #5cad4a;
+            background-color: ${(props) => props.theme.primaryColor.light};
             transform: scale(90%);
 
             transition: all 0.1s ease-in-out;
@@ -41,13 +41,13 @@ export const SearchBar = styled.div`
 
     &:focus {
       .search-bar__input {
-        background-color: #f9f9f9;
+        background-color: ${(props) => props.theme.secondaryColor.base};
       }
     }
 
     &__input {
-      background-color: white;
-      color: #006400;
+      background-color: ${(props) => props.theme.secondaryColor.dark};
+      color: ${(props) => props.theme.primaryColor.base};
 
       padding: 5px;
       padding-left: 15px;
@@ -68,7 +68,7 @@ export const SearchBar = styled.div`
       }
 
       &::placeholder {
-        color: #006400;
+        color: ${(props) => props.theme.primaryColor.base};
 
         font-family: "Righteous", cursive;
         letter-spacing: 3px;
@@ -79,7 +79,7 @@ export const SearchBar = styled.div`
       &:focus {
         outline: none;
 
-        color: #006400;
+        color: ${(props) => props.theme.primaryColor.base};
 
         font-family: "Righteous", cursive;
         letter-spacing: 3px;
@@ -90,7 +90,7 @@ export const SearchBar = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: white;
+      background-color: ${(props) => props.theme.secondaryColor.dark};
       width: 32px;
       height: 32px;
 
@@ -105,7 +105,19 @@ export const SearchBar = styled.div`
       }
 
       &:active {
-        background-color: #5cad4a;
+        background-color: ${(props) => props.theme.primaryColor.light};
+      }
+
+      &--inverse {
+        img {
+          filter: brightness(0%) invert(100%);
+        }
+
+        &:hover {
+          img {
+            filter: none;
+          }
+        }
       }
 
       &__first {

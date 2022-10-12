@@ -14,6 +14,7 @@ import { createGlobalStyle } from "styled-components";
 import { Modal } from "components";
 import { pageState } from "recoil/api/atoms";
 import axios from "axios";
+import { themeState } from "recoil/theme/atom";
 
 const UnfocusStyle = createGlobalStyle`
   
@@ -26,6 +27,7 @@ const Home: NextPage = () => {
   const [, setModal] = useRecoilState(modalState);
   const modal = useRecoilValue(modalState);
   const page = useRecoilValue(pageState);
+  const isDarkTheme = useRecoilValue(themeState);
 
   return (
     <>
@@ -34,7 +36,7 @@ const Home: NextPage = () => {
           <div className="modal-interface__button modal-interface__button--left">
             <Button
               type="button"
-              icon="/images/arrow.png"
+              icon={`/images/arrow${isDarkTheme ? "-inverse" : ""}.png`}
               iconSize={100}
               orientation="left"
               disabled={modal.id <= 1}
@@ -58,7 +60,7 @@ const Home: NextPage = () => {
           <div className="modal-interface__button modal-interface__button--right">
             <Button
               type="button"
-              icon="/images/arrow.png"
+              icon={`/images/arrow${isDarkTheme ? "-inverse" : ""}.png`}
               iconSize={100}
               disabled={page ? modal.id >= page.info.count : true}
               onClick={() => {

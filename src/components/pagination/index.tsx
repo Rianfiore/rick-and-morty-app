@@ -12,12 +12,14 @@ import { useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { pageState } from "recoil/api/atoms";
 import { paginationState } from "recoil/pagination/atoms";
+import { themeState } from "recoil/theme/atom";
 
 const PageIndicator = () => {
   const [, setCurrentData] = useRecoilState(pageState);
   const [, setPagination] = useRecoilState(paginationState);
   const pagination = useRecoilValue(paginationState);
   const { totalPages, currentPage, currentSearch, fivePages } = pagination;
+  const isDarkTheme = useRecoilValue(themeState);
 
   return (
     <S.Pagination>
@@ -27,7 +29,7 @@ const PageIndicator = () => {
             <Button
               disabled={fivePages[0] === 1}
               type="button"
-              icon="/images/arrow.png"
+              icon={`/images/arrow${isDarkTheme ? "-inverse" : ""}.png`}
               iconSize={20}
               orientation="left"
               onClick={() => {
@@ -172,7 +174,7 @@ const PageIndicator = () => {
             <Button
               disabled={fivePages[4] === totalPages.length}
               type="button"
-              icon="/images/arrow.png"
+              icon={`/images/arrow${isDarkTheme ? "-inverse" : ""}.png`}
               iconSize={20}
               onClick={() => {
                 if (fivePages[4] === totalPages.length) return;
@@ -236,6 +238,7 @@ export const Pagination = () => {
   const [, setPagination] = useRecoilState(paginationState);
   const pagination = useRecoilValue(paginationState);
   const { totalPages, currentPage, fivePages } = pagination;
+  const isDarkTheme = useRecoilValue(themeState);
 
   useEffect(() => {
     if (currentData === null) {
@@ -320,7 +323,7 @@ export const Pagination = () => {
                   <Button
                     disabled={currentPage === 1}
                     type="button"
-                    icon="/images/arrow.png"
+                    icon={`/images/arrow${isDarkTheme ? "-inverse" : ""}.png`}
                     iconSize={50}
                     orientation="left"
                     onClick={() =>
@@ -385,7 +388,7 @@ export const Pagination = () => {
                   <Button
                     disabled={currentPage === totalPages.length}
                     type="button"
-                    icon="/images/arrow.png"
+                    icon={`/images/arrow${isDarkTheme ? "-inverse" : ""}.png`}
                     orientation="right"
                     iconSize={50}
                     onClick={() =>

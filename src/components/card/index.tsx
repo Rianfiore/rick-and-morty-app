@@ -1,17 +1,19 @@
 import Image from "next/image";
 import { LegacyRef } from "react";
 import { useHover } from "utils/hooks";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { modalState } from "recoil/modal/atoms";
 
 import * as S from "./styles";
 
 import { ICard } from "./types";
 import axios from "axios";
+import { themeState } from "recoil/theme/atom";
 
 export const Card = ({ id, img, title }: ICard) => {
   const [hoverRef, isHovered] = useHover();
   const [, setModal] = useRecoilState(modalState);
+  const isDarkTheme = useRecoilValue(themeState);
 
   return (
     <>
@@ -40,7 +42,9 @@ export const Card = ({ id, img, title }: ICard) => {
             <div className="card__content__photo">
               <div className="card__content__photo__cover">
                 <Image
-                  src="/images/portal-cover.png"
+                  src={`/images/portal-cover${
+                    isDarkTheme ? "-inverse" : ""
+                  }.png`}
                   alt=""
                   width={150}
                   height={150}

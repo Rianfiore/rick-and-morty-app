@@ -6,6 +6,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Episode } from "recoil/api/atoms/types";
 import Image from "next/image";
+import { themeState } from "recoil/theme/atom";
 
 const BodyOverride = createGlobalStyle`
   
@@ -21,6 +22,7 @@ export const Modal = () => {
   const [lastEpisode, setLastEpisode] = useState<Episode | null>();
   const modal = useRecoilValue(modalState);
   const [closeAnimation, setCloseAnimation] = useState(true);
+  const isDarkTheme = useRecoilValue(themeState);
 
   useEffect(() => {
     if (modal) {
@@ -45,8 +47,16 @@ export const Modal = () => {
         }`}
       >
         <div className="modal__container">
-          <div className="modal__container__header">
-            <h2 className="modal__container__header__title">
+          <div
+            className={`modal__container__header ${
+              isDarkTheme ? "modal__container__header--inverse" : ""
+            }`}
+          >
+            <h2
+              className={`modal__container__header__title ${
+                isDarkTheme ? "modal__container__header__title--inverse" : ""
+              }`}
+            >
               Identification Card
             </h2>
             <button
@@ -56,7 +66,11 @@ export const Modal = () => {
                   setModal({ ...modal, isModalOpen: false });
                 }, 1000);
               }}
-              className="modal__container__header__exit-button"
+              className={`modal__container__header__exit-button ${
+                isDarkTheme
+                  ? "modal__container__header__exit-button--inverse"
+                  : ""
+              }`}
               type="submit"
             >
               X
@@ -99,7 +113,11 @@ export const Modal = () => {
               </div>
             </div>
           </div>
-          <div className="modal__container__footer">
+          <div
+            className={`modal__container__footer ${
+              isDarkTheme ? "modal__container__footer--inverse" : ""
+            }`}
+          >
             <div className="modal__container__footer__details">
               <div className="modal__container__footer__label">
                 <h4>Location: </h4>
