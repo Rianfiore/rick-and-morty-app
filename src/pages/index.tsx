@@ -35,6 +35,7 @@ const Home: NextPage = () => {
         <S.ModalInterface>
           <div className="modal-interface__button modal-interface__button--left">
             <Button
+              size="large"
               type="button"
               icon={`/images/arrow${isDarkTheme ? "-inverse" : ""}.png`}
               iconSize={100}
@@ -59,6 +60,7 @@ const Home: NextPage = () => {
           <Modal />
           <div className="modal-interface__button modal-interface__button--right">
             <Button
+              size="large"
               type="button"
               icon={`/images/arrow${isDarkTheme ? "-inverse" : ""}.png`}
               iconSize={100}

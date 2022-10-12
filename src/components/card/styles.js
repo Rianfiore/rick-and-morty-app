@@ -10,11 +10,11 @@ export const Card = styled.div`
     justify-content: center;
     align-items: center;
 
-    width: 120px;
-    height: 180px;
+    width: 13vw;
+    height: 20vw;
 
-    border: 3px solid ${(props) => props.theme.secondaryColor.dark};
-    border-radius: 20px;
+    border: 0.4vw solid ${(props) => props.theme.secondaryColor.dark};
+    border-radius: 2.5vw;
 
     filter: drop-shadow(
       5px 5px 0px ${(props) => props.theme.dropShadowColor20}
@@ -45,7 +45,7 @@ export const Card = styled.div`
       justify-content: center;
       align-items: center;
 
-      border-radius: 16px;
+      border-radius: 1.5vw;
 
       &__button {
         background-color: transparent;
@@ -58,6 +58,7 @@ export const Card = styled.div`
 
         text-transform: uppercase;
         font-family: "Righteous", cursive;
+        font-size: clamp(7px, 1vw, 35px);
       }
     }
 
@@ -72,7 +73,7 @@ export const Card = styled.div`
 
       padding: 0.2vw 0.5vw;
 
-      gap: 5px;
+      gap: 0.35vw;
 
       &--hover {
         opacity: 0.2;
@@ -80,11 +81,11 @@ export const Card = styled.div`
 
       &__photo {
         background: ${(props) => props.theme.backgroundPortal} no-repeat;
-        background-size: 125px 125px;
+        background-size: 13vw 13vw;
         background-position: center;
 
-        width: 150px;
-        height: 150px;
+        width: 14vw;
+        height: 14vw;
 
         transform: scale(72.5%);
 
@@ -96,6 +97,8 @@ export const Card = styled.div`
           position: absolute;
           z-index: 1;
 
+          width: 15vw;
+
           filter: drop-shadow(
             2px 2px 0px ${(props) => props.theme.dropShadowColor50}
           );
@@ -106,9 +109,8 @@ export const Card = styled.div`
             filter: ${(props) => props.theme.backgroundPortalFilter};
           }
         }
-
         img {
-          border-radius: 25px;
+          border-radius: 100%;
           transform: scale(95%);
         }
       }
@@ -119,27 +121,29 @@ export const Card = styled.div`
         align-items: center;
 
         width: 80%;
-        height: 25px;
+        height: 2vw;
 
         translate: 0% -20%;
 
         &__name {
-          font-size: 13px;
+          font-size: clamp(6px, 1.3vw, 30px);
           text-align: center;
           color: ${(props) => props.theme.primaryColor.base};
           filter: drop-shadow(
-              1px 0px 0px ${(props) => props.theme.secondaryColor.dark}
+              0.2vw 0px 0px ${(props) => props.theme.secondaryColor.dark}
             )
             drop-shadow(
-              0px 1px 0px ${(props) => props.theme.secondaryColor.dark}
+              0px 0.2vw 0px ${(props) => props.theme.secondaryColor.dark}
             )
             drop-shadow(
-              -1px 0px 0px ${(props) => props.theme.secondaryColor.dark}
+              -0.1vw 0px 0px ${(props) => props.theme.secondaryColor.dark}
             )
             drop-shadow(
-              0px -1px 0px ${(props) => props.theme.secondaryColor.dark}
+              0px -0.1vw 0px ${(props) => props.theme.secondaryColor.dark}
             )
-            drop-shadow(2px 2px 1px ${(props) => props.theme.dropShadowColor50});
+            drop-shadow(
+              0.3vw 0.2vw 0.1vw ${(props) => props.theme.dropShadowColor50}
+            );
         }
       }
     }

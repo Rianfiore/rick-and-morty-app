@@ -7,7 +7,9 @@ export const Pagination = styled.div`
     justify-content: center;
     align-content: center;
 
-    gap: 25px;
+    min-height: 75vh;
+
+    gap: 2.4vw;
 
     &__header {
       display: flex;
@@ -20,7 +22,7 @@ export const Pagination = styled.div`
       align-items: center;
       justify-content: center;
 
-      gap: 50px;
+      gap: 4.5vw;
 
       &__not-found {
         display: flex;
@@ -31,6 +33,7 @@ export const Pagination = styled.div`
 
         color: ${(props) => props.theme.primaryColor.base};
         text-transform: uppercase;
+        text-align: center;
         font-size: 40px;
       }
 
@@ -41,16 +44,15 @@ export const Pagination = styled.div`
         align-items: center;
         align-content: center;
         flex-wrap: wrap;
-        gap: 15px;
+        gap: 1.5vw;
 
-        padding: 2.5% 0%;
+        padding: 1vw 0.1vw;
 
         width: 65vw;
         height: auto;
-        min-height: 75vh;
 
         border-bottom: 5px solid ${(props) => props.theme.dropShadowColor20};
-        border-radius: 50px;
+        border-radius: 5vw;
 
         filter: drop-shadow(
           5px 5px 2px ${(props) => props.theme.dropShadowColor20}
@@ -75,12 +77,12 @@ export const Pagination = styled.div`
           justify-content: center;
           align-items: center;
 
-          gap: 5px;
+          gap: 0.45vw;
 
           &__truncated-page {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 0.4vw;
 
             &__button-left {
               display: flex;
@@ -91,10 +93,10 @@ export const Pagination = styled.div`
 
               &__truncated-point {
                 background-color: ${(props) => props.theme.primaryColor.base};
-                width: 5px;
-                height: 5px;
+                width: 0.4vw;
+                height: 0.4vw;
                 border-radius: 100%;
-                margin: 0px 2px;
+                margin: 0px 0.2vw;
                 transform: translateX(100%);
               }
             }
@@ -108,10 +110,10 @@ export const Pagination = styled.div`
 
               &__truncated-point {
                 background-color: ${(props) => props.theme.primaryColor.base};
-                width: 5px;
-                height: 5px;
+                width: 0.4vw;
+                height: 0.4vw;
                 border-radius: 100%;
-                margin: 0px 2px;
+                margin: 0px 0.2vw;
                 transform: translateX(-100%);
               }
             }

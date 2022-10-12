@@ -9,11 +9,11 @@ export const SearchBar = styled.div`
     justify-content: center;
     align-items: center;
 
-    border-radius: 25px;
-    padding: 5px 0px;
+    border-radius: 15vw;
+    padding: 0.4vw 0px;
 
-    width: 500px;
-    height: 40px;
+    width: 31.5vw;
+    height: 2.5vw;
 
     &:hover {
       .search-bar__input {
@@ -49,22 +49,22 @@ export const SearchBar = styled.div`
       background-color: ${(props) => props.theme.secondaryColor.dark};
       color: ${(props) => props.theme.primaryColor.base};
 
-      padding: 5px;
-      padding-left: 15px;
+      padding: 0.4vw;
+      padding-left: 1vw;
 
-      border-top-left-radius: 25px;
-      border-bottom-left-radius: 25px;
+      border-top-left-radius: 10vw;
+      border-bottom-left-radius: 10vw;
       border: none;
 
-      width: 432px;
-      height: 22px;
+      width: 27vw;
+      height: 1.5vw;
 
-      font-size: 20px;
+      font-size: clamp(8px, 1vw, 30px);
       font-family: "Righteous", cursive;
       letter-spacing: 3px;
 
       &--clear-icon {
-        width: 400px;
+        width: 24.7vw;
       }
 
       &::placeholder {
@@ -73,7 +73,7 @@ export const SearchBar = styled.div`
         font-family: "Righteous", cursive;
         letter-spacing: 3px;
 
-        padding: 10px 0px;
+        padding: 0.7vw 0px;
       }
 
       &:focus {
@@ -82,7 +82,7 @@ export const SearchBar = styled.div`
         color: ${(props) => props.theme.primaryColor.base};
 
         font-family: "Righteous", cursive;
-        letter-spacing: 3px;
+        letter-spacing: 0.1vw;
       }
     }
 
@@ -91,8 +91,8 @@ export const SearchBar = styled.div`
       justify-content: center;
       align-items: center;
       background-color: ${(props) => props.theme.secondaryColor.dark};
-      width: 32px;
-      height: 32px;
+      width: 2.3vw;
+      height: 2.3vw;
 
       border-top-right-radius: 100%;
       border-bottom-right-radius: 100%;
@@ -120,6 +120,14 @@ export const SearchBar = styled.div`
         }
       }
 
+      &__image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1vw;
+        height: 1vw;
+      }
+
       &__first {
         border-top-right-radius: 0%;
         border-bottom-right-radius: 0%;
@@ -128,6 +136,32 @@ export const SearchBar = styled.div`
           img {
             filter: brightness(0%) invert(100%);
           }
+        }
+      }
+    }
+
+    @media (max-width: 1000px) {
+      width: 60vw;
+      height: 5.2vw;
+
+      &__input {
+        width: 52.5vw;
+        height: 4vw;
+
+        font-size: clamp(10px, 2vw, 30px);
+
+        &--clear-icon {
+          width: 47.8vw;
+        }
+      }
+
+      &__button {
+        width: 4.8vw;
+        height: 4.8vw;
+
+        &__image {
+          width: 2vw;
+          height: 2vw;
         }
       }
     }

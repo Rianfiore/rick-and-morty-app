@@ -1,6 +1,6 @@
 import * as S from "./styles";
 import Image from "next/image";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { modalState } from "recoil/modal/atoms";
 import useScrollPosition from "utils/hooks/useScrollPosition";
 import { useState } from "react";
@@ -11,7 +11,6 @@ export const NavBar = () => {
   const modal = useRecoilValue(modalState);
   const scrollPosition = useScrollPosition();
   const [isOpenNavBar, setIsOpenNavBar] = useState(false);
-  const [, setTheme] = useRecoilState(themeState);
   const isDarkTheme = useRecoilValue(themeState);
 
   return (
@@ -29,7 +28,7 @@ export const NavBar = () => {
           >
             <Image
               src={`/images/header-background${
-                isDarkTheme ? "-inverse" : ""
+                isDarkTheme ? "" : "-inverse"
               }.jpg`}
               alt=""
               layout="fill"
@@ -107,8 +106,8 @@ export const NavBar = () => {
                     isDarkTheme ? (scrollPosition < 400 ? "-inverse" : "") : ""
                   }.png`}
                   alt=""
-                  width={50}
-                  height={50}
+                  width={100}
+                  height={100}
                 />
               </div>
               <div className="background__nav-bar__content__title">

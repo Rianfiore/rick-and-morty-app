@@ -5,7 +5,6 @@ import { useField } from "utils/hooks/useField";
 import { useRecoilValue } from "recoil";
 import { themeState } from "recoil/theme/atom";
 import { useHover } from "utils/hooks";
-import { LegacyRef } from "react";
 
 export const SearchBar = ({
   onSearch = () => {},
@@ -13,7 +12,6 @@ export const SearchBar = ({
 }: ISearchBar) => {
   const { reset, ...inputField } = useField("text");
   const isDarkTheme = useRecoilValue(themeState);
-  const [hoverRef, isHovered] = useHover();
 
   return (
     <S.SearchBar>
@@ -38,23 +36,26 @@ export const SearchBar = ({
               onSearch("");
             }}
           >
-            <Image src="/images/close.png" alt="" width={20} height={20} />
+            <div className="search-bar__button__image">
+              <Image src="/images/close.png" alt="" width={20} height={20} />
+            </div>
           </button>
         )}
         <button
-          ref={hoverRef as LegacyRef<HTMLButtonElement>}
           className={`search-bar__button ${
             isDarkTheme ? "search-bar__button--inverse" : ""
           }`}
           type="button"
           onClick={() => onSearch(inputField.value)}
         >
-          <Image
-            src={`/images/search-icon.png`}
-            alt=""
-            width={20}
-            height={20}
-          />
+          <div className="search-bar__button__image">
+            <Image
+              src={`/images/search-icon.png`}
+              alt=""
+              width={20}
+              height={20}
+            />
+          </div>
         </button>
       </div>
     </S.SearchBar>
