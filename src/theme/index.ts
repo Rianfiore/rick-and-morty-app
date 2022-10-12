@@ -18,6 +18,10 @@ export const lightTheme: DefaultTheme = {
       base: '#efefef',
       high: '#ffffff'
     },
+    switchColor: {
+      background: '#c3c3c3',
+      circle: '#fff'
+    },
     dropShadowColor20: 'rgb(0, 0, 0, 0.2)',
     dropShadowColor50: 'rgba(0,0,0, 0.5)',
     backgroundGalaxy: 'url("/images/galaxy-inverse.jpg")',
@@ -44,6 +48,10 @@ export const darkTheme: DefaultTheme = {
     dark: '#000000',
     base: '#1a1a1a',
     high: '#2d2d2d',
+  },
+  switchColor: {
+    background: "#006400",
+    circle: "#5cad4a"
   },
   dropShadowColor20: 'rgb(0, 0, 0, 0.2)',
   dropShadowColor50: 'rgba(0,0,0, 0.5)',

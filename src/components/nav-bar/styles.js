@@ -294,6 +294,7 @@ export const NavBar = styled.header`
 
         ul {
           display: flex;
+          align-items: center;
           justify-content: space-between;
           gap: 3vw;
         }

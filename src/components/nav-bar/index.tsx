@@ -5,6 +5,7 @@ import { modalState } from "recoil/modal/atoms";
 import useScrollPosition from "utils/hooks/useScrollPosition";
 import { useState } from "react";
 import { themeState } from "recoil/theme/atom";
+import { Switcher } from "components";
 
 export const NavBar = () => {
   const modal = useRecoilValue(modalState);
@@ -128,11 +129,7 @@ export const NavBar = () => {
                 </h3>
               </div>
               <ul>
-                <li>
-                  {/* <button onClick={() => setTheme(!isDarkTheme)}>
-                    Tema aqui altere
-                  </button> */}
-                </li>
+                <Switcher />
                 <li>
                   <button
                     className={`background__nav-bar__content__api-doc ${
