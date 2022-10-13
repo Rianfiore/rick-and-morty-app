@@ -45,4 +45,44 @@ export const ModalInterface = styled.div`
       background-color: ${(props) => props.theme.secondaryColor.base};
     }
   }
+
+  @media (max-width: 1000px) {
+    position: absolute;
+
+    .modal-interface__button {
+      height: 38vw;
+
+      display: flex;
+      align-items: flex-end;
+
+      &--left {
+        left: 35vw;
+      }
+      &--right {
+        right: 35vw;
+      }
+
+      .button {
+        width: 7vw;
+        height: 7vw;
+      }
+
+      @media (max-width: 850px) {
+        height: 42vw;
+
+        .button {
+          width: 10vw;
+          height: 10vw;
+
+          &__image {
+            width: 10vw;
+          }
+        }
+      }
+
+      @media (max-width: 550px) {
+        height: 46vw;
+      }
+    }
+  }
 `;

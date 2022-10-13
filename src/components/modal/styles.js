@@ -278,6 +278,89 @@ export const Modal = styled.div`
           }
         }
       }
+
+      @media (max-width: 1000px) {
+        width: 80vw;
+
+        &__header {
+          padding: 3vw 0vw;
+
+          &__title {
+            font-size: 3.5vw;
+          }
+
+          &__exit-button {
+            width: 3vw;
+            height: 3vw;
+
+            right: 15vw;
+
+            font-size: 1.5vw;
+          }
+        }
+
+        &__content {
+          font-size: clamp(11px, 2vw, 25px);
+
+          gap: 4vw;
+
+          padding: 2vw 0vw;
+
+          &__main {
+            &__photo {
+              &__img {
+                min-width: 60px;
+                width: 16vw;
+                min-height: 60px;
+                height: 16vw;
+              }
+
+              &__status {
+                font-size: clamp(8px, 1.8vw, 20px);
+              }
+            }
+
+            &__title {
+              gap: 4vw;
+              width: 45vw;
+
+              &__name {
+                font-size: clamp(10px, 4vw, 26px);
+              }
+
+              &__origin {
+                font-size: clamp(8px, 2.5vw, 16px);
+              }
+            }
+          }
+
+          &__label {
+            letter-spacing: 0.3vw;
+          }
+        }
+
+        &__footer {
+          padding: 2vw 0vw;
+
+          font-size: clamp(10px, 1.5vw, 20px);
+
+          &__details {
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5vw;
+
+            letter-spacing: 0.5vw;
+          }
+
+          &__label {
+            align-items: center;
+            flex-direction: column;
+
+            p {
+            }
+          }
+        }
+      }
     }
   }
 `;

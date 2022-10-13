@@ -55,6 +55,7 @@ const PageIndicator = () => {
                   <div className="pagination__footer__page-indicator__page-group__truncated-page">
                     <div className="pagination__footer__page-indicator__page-group__truncated-page__button-left">
                       <Button
+                        size="small"
                         onClick={() => {
                           const searchResult = currentSearch
                             ? `?name=${currentSearch}&`
@@ -93,6 +94,7 @@ const PageIndicator = () => {
 
                   return (
                     <Button
+                      size="small"
                       selected={page === currentPage}
                       key={id}
                       onClick={() => {
@@ -130,6 +132,7 @@ const PageIndicator = () => {
                       <div className="pagination__footer__page-indicator__page-group__truncated-page__button-right__truncated-point"></div>
 
                       <Button
+                        size="small"
                         onClick={() => {
                           const searchResult = currentSearch
                             ? `?name=${currentSearch}&`

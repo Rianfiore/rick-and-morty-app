@@ -22,7 +22,7 @@ export const Button = ({
           orientation !== "right" ? `button--${orientation}` : ""
         } ${selected ? "button--selected" : ""} 
         ${disabled ? "button--disabled" : ""}
-        ${children ? "button--text" : ""}`}
+        ${children ? `button__text--${size}` : ""}`}
         {...args}
       >
         {icon ? (

@@ -68,6 +68,7 @@ export const Pagination = styled.div`
       gap: 1vw;
 
       &__page-indicator {
+        padding-top: 4vw;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -87,9 +88,9 @@ export const Pagination = styled.div`
             &__button-left {
               display: flex;
               align-items: center;
-              position: absolute;
+              position: relative;
 
-              right: 56.8%;
+              right: 10%;
 
               &__truncated-point {
                 background-color: ${(props) => props.theme.primaryColor.base};
@@ -104,9 +105,9 @@ export const Pagination = styled.div`
             &__button-right {
               display: flex;
               align-items: center;
-              position: absolute;
+              position: relative;
 
-              left: 56.8%;
+              left: 10%;
 
               &__truncated-point {
                 background-color: ${(props) => props.theme.primaryColor.base};
@@ -126,12 +127,22 @@ export const Pagination = styled.div`
   .button__page-indicator {
     &--left {
       position: absolute;
-      right: 62.5%;
+      right: 80%;
     }
 
     &--right {
       position: absolute;
-      left: 62.5%;
+      left: 80%;
+    }
+
+    @media (min-width: 500px) {
+      &--left {
+        right: 70vw;
+      }
+
+      &--right {
+        left: 70vw;
+      }
     }
   }
 `;
