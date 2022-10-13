@@ -10,11 +10,13 @@ export const Card = styled.div`
     justify-content: center;
     align-items: center;
 
-    width: 13vw;
-    height: 20vw;
+    min-width: 60px;
+    width: 7vw;
+    min-height: 100px;
+    height: 10vw;
 
-    border: 0.4vw solid ${(props) => props.theme.secondaryColor.dark};
-    border-radius: 2.5vw;
+    border: 0.2vw solid ${(props) => props.theme.secondaryColor.dark};
+    border-radius: 1.2vw;
 
     filter: drop-shadow(
       5px 5px 0px ${(props) => props.theme.dropShadowColor20}
@@ -73,7 +75,7 @@ export const Card = styled.div`
 
       padding: 0.2vw 0.5vw;
 
-      gap: 0.35vw;
+      gap: 0.2vw;
 
       &--hover {
         opacity: 0.2;
@@ -81,11 +83,13 @@ export const Card = styled.div`
 
       &__photo {
         background: ${(props) => props.theme.backgroundPortal} no-repeat;
-        background-size: 13vw 13vw;
+        background-size: 8vw 8vw;
         background-position: center;
 
-        width: 14vw;
-        height: 14vw;
+        min-width: 70px;
+        width: 9vw;
+        min-height: 70px;
+        height: 9vw;
 
         transform: scale(72.5%);
 
@@ -97,7 +101,8 @@ export const Card = styled.div`
           position: absolute;
           z-index: 1;
 
-          width: 15vw;
+          min-width: 75px;
+          width: 10vw;
 
           filter: drop-shadow(
             2px 2px 0px ${(props) => props.theme.dropShadowColor50}
@@ -126,23 +131,23 @@ export const Card = styled.div`
         translate: 0% -20%;
 
         &__name {
-          font-size: clamp(6px, 1.3vw, 30px);
+          font-size: clamp(9px, 1.3vw, 15px);
           text-align: center;
           color: ${(props) => props.theme.primaryColor.base};
           filter: drop-shadow(
-              0.2vw 0px 0px ${(props) => props.theme.secondaryColor.dark}
+              0.1vw 0px 0px ${(props) => props.theme.secondaryColor.dark}
             )
             drop-shadow(
-              0px 0.2vw 0px ${(props) => props.theme.secondaryColor.dark}
+              0px 0.1vw 0px ${(props) => props.theme.secondaryColor.dark}
             )
             drop-shadow(
-              -0.1vw 0px 0px ${(props) => props.theme.secondaryColor.dark}
+              -0.01vw 0px 0px ${(props) => props.theme.secondaryColor.dark}
             )
             drop-shadow(
-              0px -0.1vw 0px ${(props) => props.theme.secondaryColor.dark}
+              0px -0.01vw 0px ${(props) => props.theme.secondaryColor.dark}
             )
             drop-shadow(
-              0.3vw 0.2vw 0.1vw ${(props) => props.theme.dropShadowColor50}
+              0.2vw 0.1vw 0.1vw ${(props) => props.theme.dropShadowColor50}
             );
         }
       }
