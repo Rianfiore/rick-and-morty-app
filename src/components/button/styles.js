@@ -16,7 +16,7 @@ export const Button = styled.div`
 
     transition: all 0.1s ease-in-out;
 
-    font-size: clamp(3px, 0.8vw, 20px);
+    font-size: clamp(10px, 1.2vw, 25px);
 
     &:hover {
       cursor: pointer;
@@ -35,13 +35,49 @@ export const Button = styled.div`
       pointer-events: none;
     }
 
-    &--text {
+    &__text {
       width: 1.8vw;
       height: 1.8vw;
 
       font-weight: 1000;
 
       border: 0.15vw solid ${(props) => props.theme.primaryColor.base};
+
+      &--small {
+        min-width: 20px;
+        width: 1vw;
+        min-height: 20px;
+        height: 1vw;
+      }
+
+      &--medium {
+        min-width: 40px;
+        width: 2vw;
+        min-height: 40px;
+        height: 2vw;
+      }
+
+      &--large {
+        width: 4vw;
+        height: 4vw;
+      }
+
+      @media (min-width: 800px) {
+        &--small {
+          width: 3vw;
+          height: 3vw;
+        }
+
+        &--medium {
+          width: 6vw;
+          height: 6vw;
+        }
+
+        &--large {
+          width: 8vw;
+          height: 8vw;
+        }
+      }
     }
 
     &--selected {
@@ -79,18 +115,39 @@ export const Button = styled.div`
       align-items: center;
 
       &--small {
+        min-width: 20px;
         width: 1vw;
+        min-height: 20px;
         height: 1vw;
       }
 
       &--medium {
+        min-width: 40px;
         width: 2vw;
+        min-height: 40px;
         height: 2vw;
       }
 
       &--large {
         width: 4vw;
         height: 4vw;
+      }
+
+      @media (min-width: 800px) {
+        &--small {
+          width: 3vw;
+          height: 3vw;
+        }
+
+        &--medium {
+          width: 6vw;
+          height: 6vw;
+        }
+
+        &--large {
+          width: 8vw;
+          height: 8vw;
+        }
       }
     }
   }
