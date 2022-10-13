@@ -47,7 +47,7 @@ export const ModalInterface = styled.div`
   }
 
   @media (max-width: 1000px) {
-    position: absolute;
+    position: fixed;
 
     .modal-interface__button {
       height: 38vw;
