@@ -149,6 +149,24 @@ export const Card = styled.div`
             drop-shadow(
               0.2vw 0.1vw 0.1vw ${(props) => props.theme.dropShadowColor50}
             );
+
+          @media (max-width: 600px) {
+            filter: drop-shadow(
+                0.4vw 0px 0px ${(props) => props.theme.secondaryColor.dark}
+              )
+              drop-shadow(
+                0px 0.4vw 0px ${(props) => props.theme.secondaryColor.dark}
+              )
+              drop-shadow(
+                -0.2vw 0px 0px ${(props) => props.theme.secondaryColor.dark}
+              )
+              drop-shadow(
+                0px -0.2vw 0px ${(props) => props.theme.secondaryColor.dark}
+              )
+              drop-shadow(
+                0.2vw 0.1vw 0.1vw ${(props) => props.theme.dropShadowColor50}
+              );
+          }
         }
       }
     }
