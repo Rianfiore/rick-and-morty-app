@@ -19,6 +19,7 @@ export const Card = ({ id, img, title }: ICard) => {
     <>
       <S.Card>
         <div
+          data-testid="card"
           ref={hoverRef as LegacyRef<HTMLDivElement>}
           onClick={() => {
             axios
