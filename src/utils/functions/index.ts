@@ -1,0 +1,1 @@
+export { hexToRGB } from './hexToRGB';
