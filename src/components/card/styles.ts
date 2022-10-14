@@ -36,32 +36,6 @@ export const Card = styled.div`
     }
 
     &__details {
-      background-color: ${(props) => props.theme.primaryColor.lightTransparent};
-
-      position: absolute;
-
-      width: 100%;
-      height: 100%;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      border-radius: 1.5vw;
-
-      &__button {
-        background-color: transparent;
-        color: ${(props) => props.theme.secondaryColor.dark};
-
-        border: none;
-
-        width: 100%;
-        height: 100%;
-
-        text-transform: uppercase;
-        font-family: "Righteous", cursive;
-        font-size: clamp(7px, 1vw, 35px);
-      }
     }
 
     &__content {

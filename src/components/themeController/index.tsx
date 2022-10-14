@@ -11,8 +11,10 @@ export const ThemeController = ({ children }: IThemeController) => {
   const isDarkMode = useRecoilValue(themeState);
 
   return (
-    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-      {children}
-    </ThemeProvider>
+    <div data-testid="theme-controller">
+      <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+        {children}
+      </ThemeProvider>
+    </div>
   );
 };

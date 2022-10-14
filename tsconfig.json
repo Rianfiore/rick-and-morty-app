@@ -15,8 +15,9 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": "./src",
-    "incremental": true
+    "incremental": true,
+    
   },
-  "include": ["src", "next-env.d.ts", "**/*.ts", "**/*.tsx", "src/recoil"],
+  "include": ["src", "next-env.d.ts", "**/*.ts", "**/*.tsx" ],
   "exclude": ["node_modules"]
 }

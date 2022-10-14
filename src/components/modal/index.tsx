@@ -2,11 +2,11 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { modalState } from "recoil/modal/atoms";
 import { createGlobalStyle } from "styled-components";
 import * as S from "./styles";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Episode } from "recoil/api/atoms/types";
 import Image from "next/image";
 import { themeState } from "recoil/theme/atom";
+import { api } from "services";
 
 const BodyOverride = createGlobalStyle`
   
@@ -24,18 +24,26 @@ export const Modal = () => {
   const [closeAnimation, setCloseAnimation] = useState(true);
   const isDarkTheme = useRecoilValue(themeState);
 
+  const getEpisode = useCallback(() => {
+    const url = modal.episode.at(-1) as string;
+
+    api.getDirectly(url).then((episode) => {
+      setLastEpisode(episode);
+    });
+  }, [modal.episode]);
+
   useEffect(() => {
     if (modal) {
-      const url = modal.episode.at(-1) as string;
-      axios.get(url).then((res) => setLastEpisode(res.data));
+      getEpisode();
     }
-  }, [modal]);
+  }, [modal, getEpisode]);
 
   return (
     <S.Modal>
       <BodyOverride />
 
       <div
+        data-testid="modal"
         className={`modal ${
           closeAnimation ? "modal--opened" : "modal--closed"
         } ${

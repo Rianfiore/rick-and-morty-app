@@ -5,6 +5,7 @@ import { useField } from "utils/hooks/useField";
 import { useRecoilValue } from "recoil";
 import { themeState } from "recoil/theme/atom";
 import { useHover } from "utils/hooks";
+import { ChangeEvent } from "react";
 
 export const SearchBar = ({
   onSearch = () => {},
@@ -13,28 +14,32 @@ export const SearchBar = ({
   const { reset, ...inputField } = useField("text");
   const isDarkTheme = useRecoilValue(themeState);
 
+  const clearSearch = () => {
+    reset();
+    onSearch("");
+  };
+
+  const changePlaceholder = (e: ChangeEvent<HTMLInputElement>) => {
+    onChange(e.target.value);
+    inputField.onChange(e);
+  };
+
   return (
     <S.SearchBar>
-      <div className="search-bar">
+      <div data-testid="search-bar" className="search-bar">
         <input
           {...inputField}
           className={`search-bar__input ${
             inputField.value.length > 0 ? "search-bar__input--clear-icon" : ""
           }`}
           placeholder="Search here"
-          onChange={(e) => {
-            onChange(e.target.value);
-            inputField.onChange(e);
-          }}
+          onChange={(e) => changePlaceholder(e)}
         />
         {inputField.value.length > 0 && (
           <button
             className="search-bar__button search-bar__button__first"
             type="button"
-            onClick={() => {
-              reset();
-              onSearch("");
-            }}
+            onClick={() => clearSearch()}
           >
             <div className="search-bar__button__image">
               <Image src="/images/close.png" alt="" width={20} height={20} />
