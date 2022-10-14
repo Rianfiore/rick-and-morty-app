@@ -1,5 +1,21 @@
 import styled from "styled-components";
 
+export const ButtonCard = styled.div`
+  .card__details__button {
+    background-color: transparent;
+        color: ${(props) => props.theme.secondaryColor.dark};
+
+        border: none;
+
+        width: 100%;
+        height: 100%;
+
+        text-transform: uppercase;
+        font-family: "Righteous", cursive;
+        font-size: clamp(7px, 1vw, 35px);
+  }
+`
+
 export const Card = styled.div`
   .card {
     background: ${(props) => props.theme.backgroundGalaxy};
@@ -49,19 +65,6 @@ export const Card = styled.div`
 
       border-radius: 1.5vw;
 
-      &__button {
-        background-color: transparent;
-        color: ${(props) => props.theme.secondaryColor.dark};
-
-        border: none;
-
-        width: 100%;
-        height: 100%;
-
-        text-transform: uppercase;
-        font-family: "Righteous", cursive;
-        font-size: clamp(7px, 1vw, 35px);
-      }
     }
 
     &__content {
@@ -190,3 +193,4 @@ export const Card = styled.div`
     }
   }
 `;
+
