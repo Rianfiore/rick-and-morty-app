@@ -3,9 +3,16 @@ import Image from "next/image";
 import { useRecoilValue } from "recoil";
 import { modalState } from "recoil/modal/atoms";
 import useScrollPosition from "utils/hooks/useScrollPosition";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { themeState } from "recoil/theme/atom";
 import { Switcher } from "components";
+
+export const handleButtonAction = (
+  setIsOpenNavBar: Dispatch<SetStateAction<boolean>>,
+  isOpenNavBar: boolean
+) => {
+  setIsOpenNavBar(!isOpenNavBar);
+};
 
 export const NavBar = () => {
   const modal = useRecoilValue(modalState);
@@ -17,6 +24,7 @@ export const NavBar = () => {
     <>
       <S.NavBar>
         <div
+          data-testid="nav-bar"
           className={`background ${scrollPosition >= 400 ? "inverse" : ""} ${
             modal.isModalOpen ? "background--unfocused" : ""
           }`}
@@ -59,7 +67,7 @@ export const NavBar = () => {
           </div>
 
           <button
-            onClick={() => setIsOpenNavBar(!isOpenNavBar)}
+            onClick={() => handleButtonAction(setIsOpenNavBar, isOpenNavBar)}
             className={`action-nav-bar ${
               scrollPosition >= 400
                 ? isDarkTheme
