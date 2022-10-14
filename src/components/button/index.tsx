@@ -14,19 +14,22 @@ export const Button = ({
   disabled = false,
   ...args
 }: IButton) => {
-  console.log(size);
   return (
     <S.Button>
       <button
+        data-testid="button"
         className={`button ${
           orientation !== "right" ? `button--${orientation}` : ""
         } ${selected ? "button--selected" : ""} 
         ${disabled ? "button--disabled" : ""}
-        ${children ? `button__text--${size}` : ""}`}
+        ${children ? `button__text button__text--${size}` : ""}`}
         {...args}
       >
         {icon ? (
-          <div className={`button__image button__image--${size}`}>
+          <div
+            data-testid="button__image"
+            className={`button__image button__image--${size}`}
+          >
             <Image src={icon} alt="" width={iconSize} height={iconSize} />
           </div>
         ) : (

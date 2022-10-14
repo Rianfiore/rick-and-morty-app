@@ -4,5 +4,6 @@ export {Card} from './card'
 export {SearchBar} from './search-bar/'
 export {Modal} from './modal'
 export {Button} from './button'
+export {ButtonCard} from './button-card'
 export {Switcher} from "./switcher"
 export {ThemeController} from './themeController'
