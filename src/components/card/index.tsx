@@ -6,13 +6,31 @@ import { modalState } from "recoil/modal/atoms";
 
 import * as S from "./styles";
 
-import { ICard } from "./types";
+import { ICard, IButtonCard } from "./types";
 import axios from "axios";
 import { themeState } from "recoil/theme/atom";
 
+export const ButtonCard = ({ identificator, label }: IButtonCard) => {
+  const [, setModal] = useRecoilState(modalState);
+  return (
+    <button
+      type="button"
+      data-testid="button-details"
+      className="card__details__button"
+      onClick={() => {
+        axios
+          .get(`https://rickandmortyapi.com/api/character/${identificator}`)
+          .then((res) => setModal({ ...res.data, isModalOpen: true }));
+      }}
+    >
+      {label}
+    </button>
+  );
+};
+
 export const Card = ({ id, img, title }: ICard) => {
   const [hoverRef, isHovered] = useHover();
-  const [, setModal] = useRecoilState(modalState);
+
   const isDarkTheme = useRecoilValue(themeState);
 
   return (
@@ -21,18 +39,11 @@ export const Card = ({ id, img, title }: ICard) => {
         <div
           data-testid="card"
           ref={hoverRef as LegacyRef<HTMLDivElement>}
-          onClick={() => {
-            axios
-              .get(`https://rickandmortyapi.com/api/character/${id}`)
-              .then((res) => setModal({ ...res.data, isModalOpen: true }));
-          }}
           className={`card ${isHovered ? `card--hover` : ""}`}
         >
           {isHovered && (
             <div className="card__details">
-              <button type="button" className="card__details__button">
-                Show details
-              </button>
+              <ButtonCard identificator={id} label="Show Details" />
             </div>
           )}
           <div

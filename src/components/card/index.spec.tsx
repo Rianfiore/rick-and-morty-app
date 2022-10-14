@@ -1,9 +1,11 @@
 import { Card } from ".";
-import { render } from "@testing-library/react";
+import { render, screen, fireEvent, getByTestId } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import { lightTheme } from "theme";
 import { RecoilRoot } from "recoil";
+import mockAxios from "jest-mock-axios";
 import axios from "axios";
+import { mount, shallow } from "enzyme";
 
 const makeSut = () =>
   render(
@@ -11,7 +13,7 @@ const makeSut = () =>
       <RecoilRoot>
         <Card
           id={1}
-          img="https://rickandmortyapi.com/api/character/1"
+          img="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
           title="Rick Sanchez"
         />
       </RecoilRoot>
@@ -25,7 +27,62 @@ describe("Card Component", () => {
     expect(getByTestId("card")).toBeInTheDocument();
   });
 
-  describe("when clicks on card", () => {
-    it("should return character data", async () => {});
+  describe("when hover on card", () => {
+    it("should render button details", () => {
+      const { getByTestId } = makeSut();
+
+      if (fireEvent.mouseOver(getByTestId("card"))) {
+        const buttonDetails = screen.getByRole("button");
+
+        expect(buttonDetails).toBeInTheDocument();
+        expect(buttonDetails).toHaveClass("card__details__button");
+      }
+    });
+
+    describe("when click on card", () => {
+      it("should be able to click", () => {
+        const { getByTestId } = makeSut();
+
+        if (fireEvent.mouseOver(getByTestId("card"))) {
+          const buttonDetails = screen.getByRole("button");
+
+          expect(buttonDetails).not.toHaveAttribute("disabled");
+        }
+      });
+
+      it("should get api data successfully", async () => {
+        const { getByText, getByTestId } = makeSut();
+
+        if (fireEvent.mouseOver(getByTestId("card"))) {
+          const onClick = jest.fn();
+          const buttonDetails = screen.getByRole("button");
+
+          fireEvent.click(buttonDetails);
+
+          expect(onClick).toBeCalled();
+
+          if (fireEvent.click(buttonDetails)) {
+            const title = getByText("Rick Sanchez");
+
+            expect(title).toBeInTheDocument;
+
+            const character = {
+              id: 1,
+              name: "Rick Sanchez",
+            };
+
+            mockAxios.get.mockResolvedValueOnce(character);
+
+            axios
+              .get(
+                `https://rickandmorty.com/api/character/?name=${character.name}`
+              )
+              .then((res) => {
+                expect(res).toEqual(character);
+              });
+          }
+        }
+      });
+    });
   });
 });
