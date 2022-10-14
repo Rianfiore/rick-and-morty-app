@@ -1,11 +1,18 @@
-import { Card } from ".";
-import { render, screen, fireEvent, getByTestId } from "@testing-library/react";
+import { Card, ButtonCard } from "components";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import { lightTheme } from "theme";
-import { RecoilRoot } from "recoil";
+import { RecoilRoot, useRecoilState } from "recoil";
 import mockAxios from "jest-mock-axios";
 import axios from "axios";
-import { mount, shallow } from "enzyme";
+import { openModal } from ".";
+import { modalState } from "recoil/modal/atoms";
+
+const useSetModal = () => {
+  const [, setModal] = useRecoilState(modalState);
+
+  return setModal;
+};
 
 const makeSut = () =>
   render(
@@ -15,6 +22,18 @@ const makeSut = () =>
           id={1}
           img="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
           title="Rick Sanchez"
+        />
+      </RecoilRoot>
+    </ThemeProvider>
+  );
+
+const makeSutButton = () =>
+  render(
+    <ThemeProvider theme={lightTheme}>
+      <RecoilRoot>
+        <ButtonCard
+          label="Show Details"
+          onClick={() => openModal(1, useSetModal)}
         />
       </RecoilRoot>
     </ThemeProvider>
@@ -50,16 +69,26 @@ describe("Card Component", () => {
         }
       });
 
-      it("should get api data successfully", async () => {
-        const { getByText, getByTestId } = makeSut();
+      it("should call open modal function", () => {
+        const { getByTestId } = makeSut();
 
         if (fireEvent.mouseOver(getByTestId("card"))) {
-          const onClick = jest.fn();
           const buttonDetails = screen.getByRole("button");
 
-          fireEvent.click(buttonDetails);
+          if (fireEvent.click(buttonDetails)) {
+            makeSutButton();
 
-          expect(onClick).toBeCalled();
+            expect(openModal(1, useSetModal)).toBeCalled;
+          }
+        }
+      });
+
+      it("should get api data successfully", async () => {
+        const { getByTestId, getByText } = makeSut();
+
+        if (fireEvent.mouseOver(getByTestId("card"))) {
+          const { container } = makeSutButton();
+          const buttonDetails = container;
 
           if (fireEvent.click(buttonDetails)) {
             const title = getByText("Rick Sanchez");
