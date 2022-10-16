@@ -13,7 +13,11 @@ export const Switcher = () => {
         <input
           type="checkbox"
           className="switcher__checkbox"
-          onChange={() => setTheme(!isDarkTheme)}
+          onChange={() => {
+            setTheme(!isDarkTheme)
+
+            localStorage.setItem('isDarkTheme', (!isDarkTheme).toString())
+          }}
         />
         <div className="switcher__icon-one">
           <Image src="/images/light.png" alt="" width={18} height={18} />
