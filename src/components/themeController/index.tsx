@@ -14,13 +14,9 @@ export const ThemeController = ({ children }: IThemeController) => {
 
   useEffect(() => {
     if(localStorage) {
-    
 
       const themeLocalStorage = localStorage.getItem('isDarkTheme')
-
       const theme : boolean = themeLocalStorage === 'true' ? true : false
-
-      console.log(theme)
       
       setIsDarkMode(theme)
     }
