@@ -27,6 +27,4 @@ describe("Page Indicator Component", () => {
 
     expect(getByTestId("page-indicator")).toBeInTheDocument();
   });
-
-  describe('when ', () => {})
 });
