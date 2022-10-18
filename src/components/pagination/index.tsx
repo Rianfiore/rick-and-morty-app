@@ -13,6 +13,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { pageState } from "recoil/api/atoms";
 import { paginationState } from "recoil/pagination/atoms";
 import { themeState } from "recoil/theme/atom";
+import { handleClickPagination, handleClickPageIndicator } from "./functions";
 
 const PageIndicator = () => {
   const [, setCurrentData] = useRecoilState(pageState);
@@ -20,46 +21,6 @@ const PageIndicator = () => {
   const pagination = useRecoilValue(paginationState);
   const { totalPages, currentPage, currentSearch, fivePages } = pagination;
   const isDarkTheme = useRecoilValue(themeState);
-
-  const handleClickPageIndicator = (direction: "left" | "right") => {
-    console.log("a");
-    const previousPage = () => {
-      if (fivePages[0] === 1) return;
-
-      const newFivePages = [
-        fivePages[0] - 1,
-        fivePages[0],
-        fivePages[1],
-        fivePages[2],
-        fivePages[3],
-      ];
-
-      setPagination({ ...pagination, fivePages: newFivePages });
-    };
-
-    const nextPage = () => {
-      if (fivePages[4] === totalPages.length) return;
-
-      const newFivePages = [
-        fivePages[1],
-        fivePages[2],
-        fivePages[3],
-        fivePages[4],
-        fivePages[4] + 1,
-      ];
-
-      setPagination({ ...pagination, fivePages: newFivePages });
-    };
-
-    switch (direction) {
-      case "left":
-        previousPage();
-        break;
-      case "right":
-        nextPage();
-        break;
-    }
-  };
 
   return (
     <S.Pagination>
@@ -76,7 +37,7 @@ const PageIndicator = () => {
               icon={`/images/arrow${isDarkTheme ? "-inverse" : ""}.png`}
               iconSize={20}
               orientation="left"
-              onClick={() => handleClickPageIndicator("left")}
+              onClick={() => handleClickPageIndicator("left", pagination, setPagination)}
             />
           </div>
           {fivePages && (
@@ -212,7 +173,7 @@ const PageIndicator = () => {
               type="button"
               icon={`/images/arrow${isDarkTheme ? "-inverse" : ""}.png`}
               iconSize={20}
-              onClick={() => handleClickPageIndicator("right")}
+              onClick={() => handleClickPageIndicator("right", pagination, setPagination)}
             />
           </div>
         </div>
@@ -266,109 +227,6 @@ export const Pagination = () => {
   const pagination = useRecoilValue(paginationState);
   const { totalPages, currentPage, fivePages } = pagination;
   const isDarkTheme = useRecoilValue(themeState);
-
-  const handleClickPagination = (direction: "left" | "right") => {
-    const previousPage = () => {
-      currentData?.info.prev &&
-        axios.get(currentData?.info.prev).then((res) => {
-          setCurrentData(res.data);
-
-          if (currentPage <= fivePages[0]) {
-            const newFivePages = [
-              currentPage - 1,
-              currentPage,
-              currentPage + 1,
-              currentPage + 2,
-              currentPage + 3,
-            ];
-
-            if (currentPage > 0) {
-              setPagination({
-                ...pagination,
-                currentPage: currentPage - 1,
-                fivePages: newFivePages,
-              });
-            }
-          } else if (currentPage > 0) {
-            if (currentPage > fivePages[4]) {
-              const newFivePages = [
-                currentPage - 5,
-                currentPage - 4,
-                currentPage - 3,
-                currentPage - 2,
-                currentPage - 1,
-              ];
-
-              setPagination({
-                ...pagination,
-                currentPage: currentPage - 1,
-                fivePages: newFivePages,
-              });
-            } else {
-              setPagination({
-                ...pagination,
-                currentPage: currentPage - 1,
-              });
-            }
-          }
-        });
-    };
-
-    const nextPage = () => {
-      currentData?.info.next &&
-        axios.get(currentData?.info.next).then((res) => {
-          setCurrentData(res.data);
-
-          if (currentPage >= fivePages[4]) {
-            const newFivePages = [
-              currentPage - 3,
-              currentPage - 2,
-              currentPage - 1,
-              currentPage,
-              currentPage + 1,
-            ];
-
-            if (currentPage < totalPages.length) {
-              setPagination({
-                ...pagination,
-                currentPage: currentPage + 1,
-                fivePages: newFivePages,
-              });
-            }
-          } else if (currentPage < totalPages.length) {
-            if (currentPage < fivePages[0]) {
-              const newFivePages = [
-                currentPage + 1,
-                currentPage + 2,
-                currentPage + 3,
-                currentPage + 4,
-                currentPage + 5,
-              ];
-
-              setPagination({
-                ...pagination,
-                currentPage: currentPage + 1,
-                fivePages: newFivePages,
-              });
-            } else {
-              setPagination({
-                ...pagination,
-                currentPage: currentPage + 1,
-              });
-            }
-          }
-        });
-    };
-
-    switch (direction) {
-      case "left":
-        previousPage();
-        break;
-      case "right":
-        nextPage();
-        break;
-    }
-  };
 
   useEffect(() => {
     if (currentData === null) {
@@ -456,7 +314,7 @@ export const Pagination = () => {
                     icon={`/images/arrow${isDarkTheme ? "-inverse" : ""}.png`}
                     iconSize={50}
                     orientation="left"
-                    onClick={() => handleClickPagination("left")}
+                    onClick={() => handleClickPagination("left", currentData, setCurrentData, pagination, setPagination)}
                   />
                   <div className="pagination__content__cards">
                     {currentData.results &&
@@ -477,7 +335,7 @@ export const Pagination = () => {
                     icon={`/images/arrow${isDarkTheme ? "-inverse" : ""}.png`}
                     orientation="right"
                     iconSize={50}
-                    onClick={() => handleClickPagination("right")}
+                    onClick={() => handleClickPagination("right", currentData, setCurrentData, pagination, setPagination)}
                   />
                 </>
               )
