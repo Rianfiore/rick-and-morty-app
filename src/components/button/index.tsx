@@ -6,28 +6,28 @@ import Image from "next/image";
 
 export const Button = ({
   children,
-  icon = null,
-  orientation = "right",
+  icon,
+  orientation,
   size = "medium",
   iconSize = 30,
-  selected = false,
-  disabled = false,
+  selected,
+  disabled,
   ...args
 }: IButton) => {
   return (
     <S.Button>
       <button
         data-testid="button"
+        {...args}
         className={`button ${
           orientation !== "right" ? `button--${orientation}` : ""
         } ${selected ? "button--selected" : ""} 
         ${disabled ? "button--disabled" : ""}
         ${children ? `button__text button__text--${size}` : ""}`}
-        {...args}
+        
       >
         {icon ? (
           <div
-            data-testid="button__image"
             className={`button__image button__image--${size}`}
           >
             <Image src={icon} alt="" width={iconSize} height={iconSize} />
