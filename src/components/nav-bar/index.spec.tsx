@@ -1,5 +1,5 @@
 import { NavBar } from ".";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render,  } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import { lightTheme } from "theme";
 import { RecoilRoot } from "recoil";
@@ -14,13 +14,39 @@ const makeSut = () =>
       </RecoilRoot>
     </ThemeProvider>
   );
+  const { getByTestId } = makeSut();
 
 describe("Nav Bar Component", () => {
   it("should render", () => {
-    const { getByTestId } = makeSut();
+    
+    const navBar = getByTestId('nav-bar')
 
-    expect(getByTestId("nav-bar")).toBeInTheDocument();
+    expect(navBar).toBeInTheDocument();
   });
+
+  it('should have classes', () => {
+    const { getByTestId } = makeSut();
+    const navBar = getByTestId('nav-bar')
+
+    expect(navBar).toHaveClass('background')
+  })
+
+
+
+  describe('When has conditional classes', () => {
+
+    it('should have inverse class', () => {
+      const {getByTestId} = makeSut()
+      const navBar = getByTestId('nav-bar')
+  
+      fireEvent.scroll(window, {target: {pageYOffset: 0}})
+      expect(navBar).not.toHaveClass('inverse')
+  
+  
+      fireEvent.scroll(window, {target: {pageYOffset: 400}})
+      expect(navBar).toHaveClass('inverse')
+    })
+  })
 
   it("should call open action button function", () => {
     const { getByTestId } = makeSut();

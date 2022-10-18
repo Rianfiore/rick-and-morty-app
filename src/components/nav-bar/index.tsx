@@ -19,16 +19,13 @@ export const NavBar = () => {
   const scrollPosition = useScrollPosition();
   const [isOpenNavBar, setIsOpenNavBar] = useState(false);
   const isDarkTheme = useRecoilValue(themeState);
+  const inverseClass = scrollPosition >= 400 ? "inverse" : ""
+  const unfocusedClass = modal.isModalOpen ? "background--unfocused" : ""
 
   return (
     <>
-      <S.NavBar>
-        <div
-          data-testid="nav-bar"
-          className={`background ${scrollPosition >= 400 ? "inverse" : ""} ${
-            modal.isModalOpen ? "background--unfocused" : ""
-          }`}
-        >
+      <S.NavBar >
+        <div data-testid="nav-bar" className={`background ${inverseClass} ${unfocusedClass}`}>
           <div
             className={`background__image ${
               modal.isModalOpen ? "background__image--unfocused" : ""
