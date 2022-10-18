@@ -79,6 +79,7 @@ describe("Card Component", () => {
             makeSutButton();
 
             expect(openModal(1, useSetModal)).toBeCalled;
+
           }
         }
       });
