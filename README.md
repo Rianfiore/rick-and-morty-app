@@ -19,7 +19,7 @@ Link: https://rick-and-morty-app-one-taupe.vercel.app/
 ## 🔨 Funcionalidades do projeto
 
 - `Funcionalidade 1` `Listagem de todos os personagens`: Esse sistema precisa estar apto a procurar por todos os personagens disponível pela API.
-- `Funcionalidade 2` `Filtragem de Personagens por nonme`: O sistema precisa filtrar os personagens pelos nomes, mostrando em seguida o resultado da pesquisa.
+- `Funcionalidade 2` `Filtragem de Personagens por nome`: O sistema precisa filtrar os personagens pelos nomes, mostrando em seguida o resultado da pesquisa.
 - `Funcionalidade 3` `Paginação de resultados`: Deve-se organizar todos os resultados em formato de página, com menu de navegação.
 - `Funcionalidade 4` `Tema Escuro/Claro`: Esse sistema alterna entre as trocas de tema da aplicação, localizada na barra de navegação.
 
